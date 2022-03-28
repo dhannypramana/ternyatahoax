@@ -12,3 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Route::get('/', [BlogController::class, 'allPost']);
+Route::get('/admin/dashboard', function () {
+    return view('admin.index');
+});
