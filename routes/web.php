@@ -29,4 +29,3 @@ Route::get('/register', [UserController::class, 'register']);
 
 Route::post('/register', [UserController::class, 'create']);
 Route::post('/login', [UserController::class, 'store']);
-
