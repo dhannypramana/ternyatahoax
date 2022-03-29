@@ -40,15 +40,15 @@
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="username"
-                                        placeholder="Username" name="username">
+                                        placeholder="Username" name="username" required autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="email"
-                                        placeholder="Email Address" name="email">
+                                        placeholder="Email Address" name="email" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-user" id="password"
-                                        placeholder="Password" name="password">
+                                        placeholder="Password" name="password" required>
                                 </div>
                                 {{-- Repeat Password System --}}
                                 {{-- <div class="form-group row">
