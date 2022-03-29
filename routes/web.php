@@ -20,13 +20,13 @@ use lluminate\Database\Eloquent\Collection;
 */
 
 Route::prefix('admin')->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middleware('auth:admins');
-    Route::get('/admin/login', [AdminController::class, 'login'])->middleware('guest:admins');
-    Route::get('/admin/register', [AdminController::class, 'register'])->middleware('guest:admins');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware('auth:admins');
+    Route::get('/login', [AdminController::class, 'login'])->middleware('guest:admins');
+    Route::get('/register', [AdminController::class, 'register'])->middleware('guest:admins');
     
-    Route::post('/admin/register', [AdminController::class, 'store']);
-    Route::post('/admin/login', [AdminController::class, 'authenticate']);
-    Route::post('/admin/logout', [AdminController::class, 'logout']);
+    Route::post('/register', [AdminController::class, 'store']);
+    Route::post('/login', [AdminController::class, 'authenticate']);
+    Route::post('/logout', [AdminController::class, 'logout']);
 });
 
 // User
