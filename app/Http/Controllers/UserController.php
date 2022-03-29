@@ -20,7 +20,7 @@ class UserController extends Controller
         return view('admin.register');
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'username' => 'required',
@@ -38,7 +38,7 @@ class UserController extends Controller
         return redirect('/login');        
     }
 
-    public function store(Request $request)
+    public function authenticate(Request $request)
     {
         $request->validate([
             'username' => 'required',
@@ -56,5 +56,13 @@ class UserController extends Controller
         
         $request->session()->regenerate();
         return redirect('admin/dashboard');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
     }
 }

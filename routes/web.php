@@ -21,11 +21,12 @@ use lluminate\Database\Eloquent\Collection;
 Route::group(['prefix' => 'admin'], function() {
     Route::get('/dashboard', function () {
         return view('admin.index');
-    });
+    })->middleware('auth');
 });
 
-Route::get('/login', [UserController::class, 'login']);
-Route::get('/register', [UserController::class, 'register']);
+Route::get('/login', [UserController::class, 'login'])->middleware('guest');
+Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 
-Route::post('/register', [UserController::class, 'create']);
-Route::post('/login', [UserController::class, 'store']);
+Route::post('/register', [UserController::class, 'store']);
+Route::post('/login', [UserController::class, 'authenticate']);
+Route::post('/logout', [UserController::class, 'logout']);
