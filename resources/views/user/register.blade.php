@@ -36,16 +36,16 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user" method="POST" action="/admin/register">
+                            <form class="user" method="POST" action="/register">
                                 @csrf
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="username"
                                         placeholder="Username" name="username" required autofocus>
                                 </div>
-                                {{-- <div class="form-group">
+                                <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="email"
                                         placeholder="Email Address" name="email" required>
-                                </div> --}}
+                                </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-user" id="password"
                                         placeholder="Password" name="password" required>
@@ -70,7 +70,7 @@
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
                             </div> --}}
                             <div class="text-center">
-                                <a class="small" href="/admin/login">Already have an account? Login!</a>
+                                <a class="small" href="/login">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>

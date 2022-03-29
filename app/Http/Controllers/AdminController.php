@@ -2,45 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Admin;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class AdminController extends Controller
 {
     public function login()
     {
-        return view('user.login');
+        return view('admin.login');
     }
-
     public function register()
     {
-        return view('user.register');
+        return view('admin.register');
     }
-
-    public function home()
+    public function dashboard()
     {
-        return view('user.home');
+        return view('admin.index');
     }
-
     public function store(Request $request)
     {
         $request->validate([
             'username' => 'required',
-            'email' => 'required',
             'password' => 'required'
         ]);
 
-        User::create([
+        Admin::create([
             'username' => $request->username,
-            'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
 
         $request->session()->flash('success', 'Registration Sucess, Please Login');
-        return redirect('/login');        
+        return redirect('/admin/login');
     }
 
     public function authenticate(Request $request)
@@ -55,12 +50,12 @@ class UserController extends Controller
             'password'
         ]);
 
-        if (!Auth::attempt($credentials)) {
-            return back()->with('error', 'Username or Password does not match');
+        if (Auth::guard('admins')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect('/admin/dashboard');
         }
         
-        $request->session()->regenerate();
-        return redirect('/home');
+        return back()->with('error', 'Username or Password does not match');
     }
 
     public function logout(Request $request)
@@ -68,6 +63,6 @@ class UserController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/admin/login');
     }
 }

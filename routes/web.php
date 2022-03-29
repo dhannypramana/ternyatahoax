@@ -1,9 +1,11 @@
 <?php
 
 use App\Helpers\ResponseFormatter;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use lluminate\Database\Eloquent\Collection;
 
 /*
@@ -17,16 +19,18 @@ use lluminate\Database\Eloquent\Collection;
 |
 */
 
-// Route::get('/', [BlogController::class, 'allPost']);
-Route::group(['prefix' => 'admin'], function() {
-    Route::get('/dashboard', function () {
-        return view('admin.index');
-    })->middleware('auth');
-});
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middleware('auth:admins');
+Route::get('/admin/login', [AdminController::class, 'login'])->middleware('guest:admins');
+Route::get('/admin/register', [AdminController::class, 'register'])->middleware('guest:admins');
 
+Route::post('/admin/register', [AdminController::class, 'store']);
+Route::post('/admin/login', [AdminController::class, 'authenticate']);
+Route::post('/admin/logout', [AdminController::class, 'logout']);
+
+// User
+Route::get('/home', [UserController::class, 'home'])->middleware('auth');
 Route::get('/login', [UserController::class, 'login'])->middleware('guest');
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
-
 Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout']);
