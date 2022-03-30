@@ -13,12 +13,14 @@
         <tr>
             <th>No.</th>
             <th>Judul Hoaks</th>
-            <th>Tanggal Ajuan</th>
+            <th>Nama Pelapor</th>
+            <th>Tanggal Lapor</th>
             <th>Report Hoaks</th>
         </tr>
         <tr>
             <td>1</td>
             <td><a href="#">Hacker WhatsApp</a></td>
+            <td>Dhanny Adhi Pramana</td>
             <td>20 Maret 2022</td>
             <td>
                 <button class="btn btn-success">Fakta</button>
@@ -29,6 +31,7 @@
             <td>2</td>
             <td><a href="">Hemat Token Listrik</a></td>
             <td>22 Maret 2022</td>
+            <td>Muhammad Telkom</td>
             <td>
                 <button class="btn btn-success">Fakta</button>
                 <button class="btn btn-danger">Hoax</button>
