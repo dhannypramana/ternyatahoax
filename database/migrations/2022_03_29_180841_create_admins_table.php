@@ -19,6 +19,7 @@ class CreateAdminsTable extends Migration
             $table->rememberToken();
             $table->string('username')->unique();
             $table->string('password');
+            $table->boolean('is_super')->nullable();
         });
     }
 

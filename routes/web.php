@@ -40,6 +40,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::get('/login', [AdminController::class, 'login'])->middleware('guest:admins');
+    Route::get('/register', [AdminController::class, 'register'])->middleware('guest:admins');
     Route::post('/login', [AdminController::class, 'authenticate']);
 
     Route::post('/register-admin', [AdminController::class, 'store']);

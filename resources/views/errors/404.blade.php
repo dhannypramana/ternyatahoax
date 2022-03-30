@@ -49,7 +49,7 @@
                     <div class="text-center">
                         <div class="error mx-auto" data-text="404">404</div>
                         <p class="lead text-gray-800 mb-5">Page Not Found</p>
-                        <p class="text-gray-500 mb-0">You are not logged in</p>
+                        <p class="text-gray-500 mb-0">There's something wrong with your authentication</p>
                         <p class="text-gray-500 mb-0">or, the page that you're looking for is not exist.</p>
                     </div>
 

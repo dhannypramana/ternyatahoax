@@ -68,7 +68,7 @@ class AdminController extends Controller
 
     public function addAdmin()
     {
-        return view('admin.register-admin');
+        return view('admin.register');
     }
 
     public function authenticate(Request $request)
