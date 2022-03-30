@@ -20,7 +20,19 @@ class AdminController extends Controller
     }
     public function dashboard()
     {
-        return view('admin.index');
+        return view('admin.dashboard');
+    }
+    public function unreviewed()
+    {
+        return view('admin.unreviewed');
+    }
+    public function reviewed()
+    {
+        return view('admin.reviewed');
+    }
+    public function manageAdmins()
+    {
+        return view('admin.manage');
     }
     public function store(Request $request)
     {

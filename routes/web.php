@@ -18,9 +18,13 @@ use lluminate\Database\Eloquent\Collection;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware('auth:admins');
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', [AdminController::class, 'dashboard'])->middleware('auth:admins');
+        Route::get('/unreviewed', [AdminController::class, 'unreviewed'])->middleware('auth:admins');
+        Route::get('/reviewed', [AdminController::class, 'reviewed'])->middleware('auth:admins');
+        Route::get('/manage', [AdminController::class, 'manageAdmins'])->middleware('auth:admins');
+    });
     Route::get('/login', [AdminController::class, 'login'])->middleware('guest:admins');
     Route::get('/register', [AdminController::class, 'register'])->middleware('guest:admins');
     
