@@ -42,25 +42,25 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item @if ($active == 'dashboard') active @endif">
                 <a class="nav-link" href="/admin/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             <hr class="sidebar-divider my-0">
-            <li class="nav-item active">
+            <li class="nav-item @if ($active == 'unreviewed') active @endif">
                 <a class="nav-link" href="/admin/dashboard/unreviewed" id="ajax-button">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Unreviewed Reports</span></a>
             </li>
             <hr class="sidebar-divider my-0">
-            <li class="nav-item active">
+            <li class="nav-item @if ($active == 'reviewed') active @endif">
                 <a class="nav-link" href="/admin/dashboard/reviewed">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Reviewed Reports</span></a>
             </li>
             <hr class="sidebar-divider my-0">
-            <li class="nav-item active">
+            <li class="nav-item @if ($active == 'manage') active @endif">
                 <a class="nav-link" href="/admin/dashboard/manage">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Manage Admins</span></a>
@@ -359,7 +359,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <form action="/admin/logout" method="POST">
+                                <form action="/admin/logout-admin" method="POST">
                                     @csrf
                                     <button type="submit" class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -380,8 +380,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">@yield('title_page')</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        @yield('generate_reports')
                     </div>
 
                     {{-- My Code Goes Here --}}
@@ -428,7 +427,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/admin/logout">Logout</a>
+                    <a class="btn btn-primary" href="/admin/logout-admin">Logout</a>
                 </div>
             </div>
         </div>

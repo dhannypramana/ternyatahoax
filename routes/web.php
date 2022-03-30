@@ -18,6 +18,11 @@ use lluminate\Database\Eloquent\Collection;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Page Not Found
+Route::get('/404', function () {
+    return view('errors.404');
+})->name('404');
+
 Route::prefix('admin')->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [AdminController::class, 'dashboard'])->middleware('auth:admins');
@@ -35,13 +40,10 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::get('/login', [AdminController::class, 'login'])->middleware('guest:admins');
-    Route::get('/register', function () {
-        return view('admin.404');
-    });
-    
-    Route::post('/register', [AdminController::class, 'store']);
     Route::post('/login', [AdminController::class, 'authenticate']);
-    Route::post('/logout', [AdminController::class, 'logout']);
+
+    Route::post('/register-admin', [AdminController::class, 'store']);
+    Route::post('/logout-admin', [AdminController::class, 'logout']);
 });
 
 // User

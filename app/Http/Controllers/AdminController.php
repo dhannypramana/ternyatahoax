@@ -21,20 +21,27 @@ class AdminController extends Controller
     }
     public function dashboard()
     {
-        return view('admin.dashboard');
+        return view('admin.dashboard', [
+            'active' => 'dashboard'
+        ]);
     }
     public function unreviewed()
     {
-        return view('admin.unreviewed');
+        return view('admin.unreviewed', [
+            'active' => 'unreviewed'
+        ]);
     }
     public function reviewed()
     {
-        return view('admin.reviewed');
+        return view('admin.reviewed', [
+            'active' => 'reviewed'
+        ]);
     }
     public function manageAdmins()
     {
         return view('admin.manage', [
-            'admins' => Admin::get()
+            'admins' => Admin::get(),
+            'active' => 'manage'
         ]);
     }
     public function store(Request $request)
@@ -61,7 +68,7 @@ class AdminController extends Controller
 
     public function addAdmin()
     {
-        return view('admin.register');
+        return view('admin.register-admin');
     }
 
     public function authenticate(Request $request)
