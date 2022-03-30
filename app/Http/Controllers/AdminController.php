@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -32,7 +33,9 @@ class AdminController extends Controller
     }
     public function manageAdmins()
     {
-        return view('admin.manage');
+        return view('admin.manage', [
+            'admins' => Admin::get()
+        ]);
     }
     public function store(Request $request)
     {
@@ -46,8 +49,19 @@ class AdminController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        $request->session()->flash('success', 'Registration Sucess, Please Login');
-        return redirect('/admin/login');
+        $request->session()->flash('successAdd', 'Sukses menambah data admin');
+        return redirect('/admin/dashboard/manage');
+    }
+
+    public function deleteAdmin($id)
+    {
+        Admin::destroy($id);
+        return back()->with('success', 'Success delete admin');
+    }
+
+    public function addAdmin()
+    {
+        return view('admin.register');
     }
 
     public function authenticate(Request $request)

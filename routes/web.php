@@ -23,10 +23,21 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [AdminController::class, 'dashboard'])->middleware('auth:admins');
         Route::get('/unreviewed', [AdminController::class, 'unreviewed'])->middleware('auth:admins');
         Route::get('/reviewed', [AdminController::class, 'reviewed'])->middleware('auth:admins');
-        Route::get('/manage', [AdminController::class, 'manageAdmins'])->middleware('auth:admins');
+
+        Route::prefix('manage')->group(function () {
+            Route::get('/', [AdminController::class, 'manageAdmins'])->middleware('auth:admins');
+
+            Route::get('/add', [AdminController::class, 'addAdmin'])->middleware('auth:admins');
+            Route::post('/add', [AdminController::class, 'store'])->middleware('auth:admins');
+
+            Route::get('/delete/{id}', [AdminController::class, 'deleteAdmin'])->middleware('auth:admins');
+        });
     });
+
     Route::get('/login', [AdminController::class, 'login'])->middleware('guest:admins');
-    Route::get('/register', [AdminController::class, 'register'])->middleware('guest:admins');
+    Route::get('/register', function () {
+        return view('admin.404');
+    });
     
     Route::post('/register', [AdminController::class, 'store']);
     Route::post('/login', [AdminController::class, 'authenticate']);
