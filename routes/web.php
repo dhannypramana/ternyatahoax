@@ -58,3 +58,7 @@ Route::get('/register', [UserController::class, 'register'])->middleware('guest'
 Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'authenticate']);
 Route::post('/logout', [UserController::class, 'logout']);
+
+Route::get('/lapor', [UserController::class, 'lapor']);
+Route::get('/fact', [UserController::class, 'fact']);
+Route::get('/hoax', [UserController::class, 'hoax']);

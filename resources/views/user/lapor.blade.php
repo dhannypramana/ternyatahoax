@@ -1,5 +1,5 @@
-@extends('layouts.main')
+@extends('user.layouts.main')
 
 @section('container')
-    @include('partials.form')
+    @include('user.partials.form')
 @endsection

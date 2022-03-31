@@ -25,6 +25,21 @@ class UserController extends Controller
         return view('user.home');
     }
 
+    public function lapor()
+    {
+        return view('user.lapor');
+    }
+
+    public function fact()
+    {
+        return view('user.fact');
+    }
+
+    public function hoax()
+    {
+        return view('user.hoax');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
