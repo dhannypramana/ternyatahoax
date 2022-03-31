@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>404 - Page Not Found</title>
+    <title>403 - Forbidden</title>
 
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -47,11 +47,9 @@
 
                     <!-- 404 Error Text -->
                     <div class="text-center">
-                        <div class="error mx-auto" data-text="404">404</div>
-                        <p class="lead text-gray-800 mb-5">Brain Not Found</p>
-                        <p class="text-gray-500 mb-0">There's something wrong with your brain</p>
-                        <p class="text-gray-500 mb-0">try $ git commit -m "i hate your negative shit"</p>
-                        {{-- <p class="text-gray-500 mb-0">or, the page that you're looking for is not exist.</p> --}}
+                        <div class="error mx-auto" data-text="403">403</div>
+                        <p class="lead text-gray-800 mb-5">Page Forbidden</p>
+                        <p class="text-gray-500 mb-0">There's something wrong with your authentication</p>
                     </div>
 
                 </div>

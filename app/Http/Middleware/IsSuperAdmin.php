@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsSuper
+class IsSuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class IsSuper
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->is_super == 1) {
-            return $next($request);
+        if (auth('admins')->guest() || auth('admins')->user()->username != 'superadmin') {
+            abort(403);
         }
-
-        return redirect('/admin/dashboard')->with('admin', 'You need Super Admin Access');
+        
+        return $next($request);
     }
 }

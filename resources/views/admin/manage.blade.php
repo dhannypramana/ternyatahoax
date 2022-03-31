@@ -27,8 +27,8 @@
             <td>Username</td>
             <td>Action</td>
         </tr>
-            @php $number = 1; @endphp
-            @foreach ($admins as $admin)
+        @php $number = 1; @endphp
+        @foreach ($admins as $admin)
             <tr>
                 <td>{{ $number }}</td>
                 <td>{{ $admin['username'] }}</td>
@@ -36,9 +36,9 @@
                     <a href="/admin/dashboard/manage/delete/{{ $admin->id }}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
-            @php $number = $number+1; @endphp
-            @endforeach
-    </table>
+        @php $number = $number+1; @endphp
+        @endforeach
 
+        </table>            
     <a href="/admin/dashboard/manage/add" class="btn btn-primary">Tambah Admin</a>
 @endsection

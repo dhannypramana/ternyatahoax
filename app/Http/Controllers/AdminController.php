@@ -40,7 +40,7 @@ class AdminController extends Controller
     public function manageAdmins()
     {
         return view('admin.manage', [
-            'admins' => Admin::get(),
+            'admins' => Admin::all()->except(auth('admins')->id(1)),
             'active' => 'manage'
         ]);
     }
@@ -96,6 +96,6 @@ class AdminController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/admin/login');
+        return redirect('/');
     }
 }

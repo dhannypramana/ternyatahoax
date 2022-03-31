@@ -1,5 +1,9 @@
 @extends('admin.layouts.index')
 
+@section('active')
+    active
+@endsection
+
 @section('title_page')
     Dashboard
 @endsection

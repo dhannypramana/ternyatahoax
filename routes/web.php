@@ -23,6 +23,10 @@ Route::get('/404', function () {
     return view('errors.404');
 })->name('404');
 
+Route::get('/403', function () {
+    return view('errors.403');
+})->name('403');
+
 Route::prefix('admin')->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [AdminController::class, 'dashboard'])->middleware('auth:admins');
@@ -30,12 +34,12 @@ Route::prefix('admin')->group(function () {
         Route::get('/reviewed', [AdminController::class, 'reviewed'])->middleware('auth:admins');
 
         Route::prefix('manage')->group(function () {
-            Route::get('/', [AdminController::class, 'manageAdmins'])->middleware('auth:admins');
+            Route::get('/', [AdminController::class, 'manageAdmins'])->middleware('isSuper');
 
-            Route::get('/add', [AdminController::class, 'addAdmin'])->middleware('auth:admins');
-            Route::post('/add', [AdminController::class, 'store'])->middleware('auth:admins');
+            Route::get('/add', [AdminController::class, 'addAdmin'])->middleware('isSuper');
+            Route::post('/add', [AdminController::class, 'store'])->middleware('isSuper');
 
-            Route::get('/delete/{id}', [AdminController::class, 'deleteAdmin'])->middleware('auth:admins');
+            Route::get('/delete/{id}', [AdminController::class, 'deleteAdmin'])->middleware('isSuper');
         });
     });
 
@@ -48,7 +52,7 @@ Route::prefix('admin')->group(function () {
 });
 
 // User
-Route::get('/home', [UserController::class, 'home'])->middleware('auth');
+Route::get('/', [UserController::class, 'home']);
 Route::get('/login', [UserController::class, 'login'])->middleware('guest');
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 Route::post('/register', [UserController::class, 'store']);
