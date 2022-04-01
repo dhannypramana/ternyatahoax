@@ -74,5 +74,5 @@ Route::get('/fact', [UserController::class, 'fact']);
 Route::get('/hoax', [UserController::class, 'hoax']);
 
 // Manage Reports
-Route::get('/lapor', [ReportController::class, 'index']);
-Route::post('/lapor', [ReportController::class, 'store']);
+Route::get('/lapor', [ReportController::class, 'index'])->middleware('auth');
+Route::post('/lapor', [ReportController::class, 'store'])->middleware('auth');
