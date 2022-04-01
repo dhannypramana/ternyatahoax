@@ -37,7 +37,22 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user_id = auth()->user()->id;
+        
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'link' => 'required',
+        ]);
+        
+        Report::create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'link' => $request->link,
+            'user_id' => $user_id
+        ]);
+
+        return redirect()->intended()->with('success', 'Sukses lapor berita hoax');
     }
 
     /**

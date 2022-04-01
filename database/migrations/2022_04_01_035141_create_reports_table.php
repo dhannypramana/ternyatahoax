@@ -16,6 +16,13 @@ class CreateReportsTable extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->rememberToken();
+
+            $table->text('title');
+            $table->text('body');
+            $table->string('image')->nullable();
+            $table->string('link');
+            $table->foreignId('user_id');
         });
     }
 

@@ -68,10 +68,11 @@ Route::post('/register', [UserController::class, 'store']);
 
 Route::post('/logout', [UserController::class, 'logout']);
 
-// Manage Reports
-Route::get('/lapor', [ReportController::class, 'index']);
-Route::post('/lapor', [ReportController::class, 'store']);
-
+// End of User Authentication
 
 Route::get('/fact', [UserController::class, 'fact']);
 Route::get('/hoax', [UserController::class, 'hoax']);
+
+// Manage Reports
+Route::get('/lapor', [ReportController::class, 'index']);
+Route::post('/lapor', [ReportController::class, 'store']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Report;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -29,7 +30,8 @@ class AdminController extends Controller
     public function unreviewed()
     {
         return view('admin.unreviewed', [
-            'active' => 'unreviewed'
+            'active' => 'unreviewed',
+            'reports' => Report::latest()->get()
         ]);
     }
     public function reviewed()

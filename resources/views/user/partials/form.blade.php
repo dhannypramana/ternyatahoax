@@ -1,6 +1,7 @@
 <div class="form-container">
     <div class="title">Ini Judul</div>
     <form action="/lapor" method="POST">
+      @csrf
         <div class="container">
           <div class="row justify-content-center">
             <div class="form-group col-lg-6">
@@ -23,7 +24,7 @@
           <div class="row justify-content-center">
             <div class="form-group col-lg-6">
                 <label for="exampleFormControlInput1">Sumber Postingan</label>
-                <input type="url" class="form-control" id="exampleFormControlInput1" placeholder="ini link" name="link">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ini link" name="link">
             </div>    
           </div>
           <div class="row col text-center">

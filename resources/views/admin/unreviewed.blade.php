@@ -12,31 +12,29 @@
     <table class="table table-bordered">
         <tr>
             <th>No.</th>
-            <th>Judul Hoaks</th>
+            <th>Judul Berita</th>
             <th>Nama Pelapor</th>
             <th>Tanggal Lapor</th>
             <th>Report Hoaks</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td><a href="#">Hacker WhatsApp</a></td>
-            <td>Dhanny Adhi Pramana</td>
-            <td>20 Maret 2022</td>
-            <td>
-                <button class="btn btn-success">Fakta</button>
-                <button class="btn btn-danger">Hoax</button>
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td><a href="">Hemat Token Listrik</a></td>
-            <td>22 Maret 2022</td>
-            <td>Muhammad Telkom</td>
-            <td>
-                <button class="btn btn-success">Fakta</button>
-                <button class="btn btn-danger">Hoax</button>
-            </td>
-        </tr>
+            @php
+                $num = 1;
+                @endphp
+            @foreach ($reports as $report)
+            <tr>
+                <td>{{ $num }}</td>
+                <td>{{ $report->title }}</td>
+                <td>{{ $report->user->username }}</td>
+                <td>{{ $report->created_at->format('F j, Y, H:i a') }}</td>
+                <td>
+                    <a class="btn btn-success">Fakta</a>
+                    <a class="btn btn-danger">Hoax</a>
+                </td>
+                @php
+                    $num+=1;
+                @endphp
+            </tr>
+            @endforeach
     </table>
 @endsection 
 
