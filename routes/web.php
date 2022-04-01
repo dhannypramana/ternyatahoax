@@ -43,6 +43,11 @@ Route::prefix('admin')->group(function () {
 
             Route::get('/delete/{id}', [AdminController::class, 'deleteAdmin'])->middleware('isSuper');
         });
+
+        Route::prefix('manage-users')->group(function () {
+            Route::get('/', [AdminController::class, 'manageUsers'])->middleware('isSuper');
+            Route::get('/delete/{id}', [AdminController::class, 'deleteUser'])->middleware('isSuper');
+        });
     });
 
     Route::get('/login', [AdminController::class, 'login'])->middleware('guest:admins');

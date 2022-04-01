@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +45,13 @@ class AdminController extends Controller
             'active' => 'manage'
         ]);
     }
+    public function manageUsers()
+    {
+        return view('admin.manage-users', [
+            'users' => User::all(),
+            'active' => 'manage-users'
+        ]);
+    }
     public function store(Request $request)
     {
         $request->validate([
@@ -64,6 +72,12 @@ class AdminController extends Controller
     {
         Admin::destroy($id);
         return back()->with('success', 'Success delete admin');
+    }
+
+    public function deleteUser($id)
+    {
+        User::destroy($id);
+        return back()->with('success', 'Success delete User');
     }
 
     public function addAdmin()
