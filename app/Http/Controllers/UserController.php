@@ -22,22 +22,23 @@ class UserController extends Controller
 
     public function home()
     {
-        return view('user.home');
-    }
-
-    public function lapor()
-    {
-        return view('user.lapor');
+        return view('user.home', [
+            'active' => 'home'
+        ]);
     }
 
     public function fact()
     {
-        return view('user.fact');
+        return view('user.fact', [
+            'active' => 'fact'
+        ]);
     }
 
     public function hoax()
     {
-        return view('user.hoax');
+        return view('user.hoax', [
+            'active' => 'hoax'
+        ]);
     }
 
     public function store(Request $request)
@@ -75,7 +76,7 @@ class UserController extends Controller
         }
         
         $request->session()->regenerate();
-        return redirect('/home');
+        return redirect('/');
     }
 
     public function logout(Request $request)
@@ -83,6 +84,6 @@ class UserController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/');
     }
 }

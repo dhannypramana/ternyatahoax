@@ -2,6 +2,8 @@
 
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -51,14 +53,20 @@ Route::prefix('admin')->group(function () {
     Route::post('/logout-admin', [AdminController::class, 'logout']);
 });
 
-// User
+// User Authentication
 Route::get('/', [UserController::class, 'home']);
 Route::get('/login', [UserController::class, 'login'])->middleware('guest');
+Route::post('/login', [UserController::class, 'authenticate']); 
+
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 Route::post('/register', [UserController::class, 'store']);
-Route::post('/login', [UserController::class, 'authenticate']);
+
 Route::post('/logout', [UserController::class, 'logout']);
 
-Route::get('/lapor', [UserController::class, 'lapor']);
+// Manage Reports
+Route::get('/lapor', [ReportController::class, 'index']);
+Route::post('/lapor', [ReportController::class, 'store']);
+
+
 Route::get('/fact', [UserController::class, 'fact']);
 Route::get('/hoax', [UserController::class, 'hoax']);

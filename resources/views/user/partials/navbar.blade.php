@@ -33,18 +33,63 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link " href="/">Home</a>
+          <a class="nav-link @if ($active == 'home') active @endif" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/fact">Fakta</a>
+          <a class="nav-link @if ($active == 'fact') active @endif" href="/fact">Fakta</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/hoax">Hoax</a>
+          <a class="nav-link @if ($active == 'hoax') active @endif" href="/hoax">Hoax</a>
         </li>
-      </ul>
+    </ul>
+
+      <div class="topbar-divider d-none d-sm-block"></div>
+
+      @auth
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="bi bi-person-circle"></i>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                    @if (auth()->user() !== null)
+                        Selamat Datang, {{ auth()->user()->username }}
+                    @else
+                        Not Authorized
+                    @endif
+                </span>
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <form action="/logout" method="POST">
+                  @csrf
+                  <button type="submit" class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
+                      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Logout
+                  </button>
+              </form>
+                <div class="dropdown-divider"></div>
+            </div>
+          </li>
+        </ul>
+      @else
         <a href="/login" class="btn btn-warning">Login as User</a>
-        <div class="separator"></div>
         <a href="/admin/login" class="btn btn-warning">Login as Admin</a>
+      @endauth
     </div>
   </div>
 </nav>
