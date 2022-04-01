@@ -8,5 +8,7 @@
     <p>Di laporkan Oleh : {{ $report->user->username }}</p>
     <p>Pada Tanggal : {{ $report->created_at->format('F j, Y, H:i a') }}</p>
     <h1>TAMPILAN NYA DI PERBAGUS NANTI YA BGSD, YG PENTING JALAN DLU FUNGSI NYA</h1>
+    <button class="btn btn-success">Fakta</button>
+    <button class="btn btn-danger">Hoax</button>
     <a href="/admin/dashboard/unreviewed" class="btn btn-primary">Kembali</a>
 @endsection

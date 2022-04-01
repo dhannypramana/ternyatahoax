@@ -38,7 +38,7 @@ class AdminController extends Controller
     public function detailUnreviewed(Report $report)
     {
         return view('admin.detail-unreviewed', [
-            'active' => 'detail-report',
+            'active' => 'unreviewed',
             'report' => $report
         ]);
     }
