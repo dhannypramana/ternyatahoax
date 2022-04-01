@@ -35,7 +35,10 @@
                 <td>{{ $report->user->username }}</td>
                 <td>{{ $report->created_at->format('F j, Y, H:i a') }}</td>
                 <td>
-                    <a href="/admin/dashboard/unreviewed/delete/{{ $report->slug }}" class="btn btn-danger">Delete</a>
+                    <form action="/admin/dashboard/unreviewed/delete/{{ $report->slug }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-danger"> Delete </button>
+                    </form>
                 </td>
                 @php
                     $num+=1;
