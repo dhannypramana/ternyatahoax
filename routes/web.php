@@ -33,6 +33,9 @@ Route::prefix('admin')->group(function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [AdminController::class, 'dashboard'])->middleware('auth:admins');
         Route::get('/unreviewed', [AdminController::class, 'unreviewed'])->middleware('auth:admins');
+        Route::get('/unreviewed/{report:slug}', [AdminController::class, 'detailUnreviewed'])->middleware('auth:admins');
+        Route::get('/unreviewed/delete/{report:slug}', [AdminController::class, 'deleteUnreviewedReport'])->middleware('auth:admins');
+
         Route::get('/reviewed', [AdminController::class, 'reviewed'])->middleware('auth:admins');
 
         Route::prefix('manage')->group(function () {

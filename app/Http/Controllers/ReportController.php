@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\SlugFormatter;
 use App\Models\Report;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,7 @@ class ReportController extends Controller
     public function store(Request $request)
     {
         $user_id = auth()->user()->id;
+        $slug = SlugFormatter::generateSlug($request->title);
         
         $request->validate([
             'title' => 'required',
@@ -49,6 +51,7 @@ class ReportController extends Controller
             'title' => $request->title,
             'body' => $request->body,
             'link' => $request->link,
+            'slug' => $slug,
             'user_id' => $user_id
         ]);
 

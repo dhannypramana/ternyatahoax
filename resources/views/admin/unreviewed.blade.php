@@ -9,13 +9,21 @@
 @endsection
 
 @section('container')
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <table class="table table-bordered">
         <tr>
             <th>No.</th>
             <th>Judul Berita</th>
             <th>Nama Pelapor</th>
             <th>Tanggal Lapor</th>
-            <th>Report Hoaks</th>
+            <th>Action</th>
         </tr>
             @php
                 $num = 1;
@@ -23,12 +31,11 @@
             @foreach ($reports as $report)
             <tr>
                 <td>{{ $num }}</td>
-                <td>{{ $report->title }}</td>
+                <td><a href="/admin/dashboard/unreviewed/{{ $report->slug }}">{{ $report->title }}</a></td>
                 <td>{{ $report->user->username }}</td>
                 <td>{{ $report->created_at->format('F j, Y, H:i a') }}</td>
                 <td>
-                    <a class="btn btn-success">Fakta</a>
-                    <a class="btn btn-danger">Hoax</a>
+                    <a href="/admin/dashboard/unreviewed/delete/{{ $report->slug }}" class="btn btn-danger">Delete</a>
                 </td>
                 @php
                     $num+=1;
@@ -36,6 +43,7 @@
             </tr>
             @endforeach
     </table>
+    <p class="small">*Klik di Judul laporan untuk melihat detail laporan</p>
 @endsection 
 
 @section('ajax_script')

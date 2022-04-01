@@ -20,6 +20,7 @@ class Report extends Model
         'body',
         'image',
         'link',
+        'slug',
         'user_id'
     ];
 

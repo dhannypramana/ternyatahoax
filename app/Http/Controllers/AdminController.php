@@ -34,6 +34,21 @@ class AdminController extends Controller
             'reports' => Report::latest()->get()
         ]);
     }
+
+    public function detailUnreviewed(Report $report)
+    {
+        return view('admin.detail-unreviewed', [
+            'active' => 'detail-report',
+            'report' => $report
+        ]);
+    }
+
+    public function deleteUnreviewedReport(Report $report)
+    {
+        $report->delete();
+        return back()->with('success', 'Sukses hapus data laporan yang belum di review');
+    }
+
     public function reviewed()
     {
         return view('admin.reviewed', [

@@ -19,6 +19,7 @@ class CreateReportsTable extends Migration
             $table->rememberToken();
 
             $table->text('title');
+            $table->text('slug');
             $table->text('body');
             $table->string('image')->nullable();
             $table->string('link');
