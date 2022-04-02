@@ -1,11 +1,8 @@
 <?php
 
-use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserController;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use lluminate\Database\Eloquent\Collection;
@@ -78,7 +75,6 @@ Route::get('/register', [UserController::class, 'register'])->middleware('guest'
 Route::post('/register', [UserController::class, 'store']);
 
 Route::post('/logout', [UserController::class, 'logout']);
-
 // End of User Authentication
 
 Route::get('/fact', [UserController::class, 'fact']);

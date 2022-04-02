@@ -22,6 +22,10 @@ class UserController extends Controller
 
     public function home()
     {
+        if (auth('admins')->check()) {
+            return redirect('/admin/dashboard');
+        }
+
         return view('user.home', [
             'active' => 'home'
         ]);
