@@ -21,6 +21,8 @@ class Report extends Model
         'image',
         'link',
         'slug',
+        'isReviewed',
+        'status_report',
         'user_id'
     ];
 

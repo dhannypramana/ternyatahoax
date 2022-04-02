@@ -27,34 +27,7 @@ class AdminController extends Controller
             'active' => 'dashboard'
         ]);
     }
-    public function unreviewed()
-    {
-        return view('admin.unreviewed', [
-            'active' => 'unreviewed',
-            'reports' => Report::latest()->get()
-        ]);
-    }
 
-    public function detailUnreviewed(Report $report)
-    {
-        return view('admin.detail-unreviewed', [
-            'active' => 'unreviewed',
-            'report' => $report
-        ]);
-    }
-
-    public function deleteUnreviewedReport(Report $report)
-    {
-        $report->delete();
-        return back()->with('success', 'Sukses hapus data laporan yang belum di review');
-    }
-
-    public function reviewed()
-    {
-        return view('admin.reviewed', [
-            'active' => 'reviewed'
-        ]);
-    }
     public function manageAdmins()
     {
         return view('admin.manage', [

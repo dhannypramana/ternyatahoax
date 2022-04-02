@@ -23,6 +23,8 @@ class CreateReportsTable extends Migration
             $table->text('body');
             $table->string('image')->nullable();
             $table->string('link');
+            $table->boolean('isReviewed')->default(0);
+            $table->string('status_report')->nullable();
             $table->foreignId('user_id');
         });
     }

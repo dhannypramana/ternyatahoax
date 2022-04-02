@@ -31,13 +31,19 @@ Route::get('/403', function () {
 
 Route::prefix('admin')->group(function () {
     Route::prefix('dashboard')->group(function () {
+        // Manage Unreviewed Reports
         Route::get('/', [AdminController::class, 'dashboard'])->middleware('auth:admins');
-        Route::get('/unreviewed', [AdminController::class, 'unreviewed'])->middleware('auth:admins');
-        Route::get('/unreviewed/{report:slug}', [AdminController::class, 'detailUnreviewed'])->middleware('auth:admins');
-        Route::post('/unreviewed/delete/{report:slug}', [AdminController::class, 'deleteUnreviewedReport'])->middleware('auth:admins');
+        Route::get('/unreviewed', [ReportController::class, 'unreviewed'])->middleware('auth:admins');
+        Route::get('/unreviewed/{report:slug}', [ReportController::class, 'detailUnreviewed'])->middleware('auth:admins');
+        Route::post('/unreviewed/{report:slug}/set-fact', [ReportController::class, 'setReviewFact'])->middleware('auth:admins');
+        Route::post('/unreviewed/{report:slug}/set-hoax', [ReportController::class, 'setReviewHoax'])->middleware('auth:admins');
 
-        Route::get('/reviewed', [AdminController::class, 'reviewed'])->middleware('auth:admins');
+        Route::post('/unreviewed/delete/{report:slug}', [ReportController::class, 'deleteUnreviewedReport'])->middleware('auth:admins');
 
+        // Manage Reviewed Reports
+        Route::get('/reviewed', [ReportController::class, 'reviewed'])->middleware('auth:admins');
+
+        // Manage Admins
         Route::prefix('manage')->group(function () {
             Route::get('/', [AdminController::class, 'manageAdmins'])->middleware('isSuper');
 
@@ -47,6 +53,7 @@ Route::prefix('admin')->group(function () {
             Route::get('/delete/{id}', [AdminController::class, 'deleteAdmin'])->middleware('isSuper');
         });
 
+        // Manage Users
         Route::prefix('manage-users')->group(function () {
             Route::get('/', [AdminController::class, 'manageUsers'])->middleware('isSuper');
             Route::get('/delete/{id}', [AdminController::class, 'deleteUser'])->middleware('isSuper');

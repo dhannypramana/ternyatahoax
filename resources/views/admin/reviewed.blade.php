@@ -12,28 +12,31 @@
     <table class="table table-bordered">
         <tr>
             <th>No.</th>
-            <th>Judul Hoaks</th>
+            <th>Judul Berita</th>
             <th>Nama Pelapor</th>
             <th>Tanggal Lapor</th>
-            <th>Report Hoaks</th>
+            {{-- <th>Action</th> --}}
         </tr>
-        <tr>
-            <td>1</td>
-            <td><a href="#">Hacker WhatsApp</a></td>
-            <td>Dhanny Adhi Pramana</td>
-            <td>20 Maret 2022</td>
-            <td>
-                <button class="btn btn-danger disabled">Hoax</button>
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td><a href="">Hemat Token Listrik</a></td>
-            <td>Muhammad Telkom</td>
-            <td>22 Maret 2022</td>
-            <td>
-                <button class="btn btn-success disabled">Fakta</button>
-            </td>
-        </tr>
+            @php
+                $num = 1;
+                @endphp
+            @foreach ($reports as $report)
+            <tr>
+                <td>{{ $num }}</td>
+                <td><a href="/admin/dashboard/reviewed/{{ $report->slug }}">{{ $report->title }}</a></td>
+                <td>{{ $report->user->username }}</td>
+                <td>{{ $report->created_at->format('F j, Y, H:i a') }}</td>
+                {{-- <td>
+                    <form action="/admin/dashboard/unreviewed/delete/{{ $report->slug }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-danger"> Delete </button>
+                    </form>
+                </td> --}}
+                @php
+                    $num+=1;
+                @endphp
+            </tr>
+            @endforeach
     </table>
+    <p class="small">*Klik di Judul laporan untuk melihat detail laporan</p>
 @endsection

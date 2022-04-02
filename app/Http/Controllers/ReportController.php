@@ -20,22 +20,6 @@ class ReportController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $user_id = auth()->user()->id;
@@ -55,51 +39,58 @@ class ReportController extends Controller
             'user_id' => $user_id
         ]);
 
-        return redirect()->intended()->with('success', 'Sukses lapor berita hoax');
+        $request->session()->flash('successAdd', 'Sukses lapor');
+        return redirect('/');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Report $report)
+    public function unreviewed()
     {
-        //
+        return view('admin.unreviewed', [
+            'active' => 'unreviewed',
+            'reports' => Report::where('isReviewed', 0)->latest()->get()
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Report $report)
+    public function detailUnreviewed(Report $report)
     {
-        //
+        return view('admin.detail-unreviewed', [
+            'active' => 'unreviewed',
+            'report' => $report
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Report $report)
+    public function deleteUnreviewedReport(Report $report)
     {
-        //
+        $report->delete();
+        return back()->with('success', 'Sukses hapus data laporan yang belum di review');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Report $report)
+    public function reviewed()
     {
-        //
+        return view('admin.reviewed', [
+            'active' => 'reviewed',
+            'reports' => Report::where('isReviewed', 1)->latest()->get()
+        ]);
     }
+
+    public function setReviewHoax(Report $report)
+    {
+        $report->update([
+            'isReviewed' => 1,
+            'status_report' => 0
+        ]);
+
+        return redirect('/admin/dashboard/unreviewed')->with('success', 'Sukses mereview laporan silahkan cek di bagian reviewed reports');
+    }
+
+    public function setReviewFact(Report $report)
+    {
+        $report->update([
+            'isReviewed' => 1,
+            'status_report' => 1
+        ]);
+
+        return redirect('/admin/dashboard/unreviewed')->with('success', 'Sukses mereview laporan silahkan cek di bagian reviewed reports');
+    }
+
 }
