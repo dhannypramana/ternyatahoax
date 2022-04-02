@@ -31,17 +31,18 @@ Route::get('/403', function () {
 
 Route::prefix('admin')->group(function () {
     Route::prefix('dashboard')->group(function () {
-        // Manage Unreviewed Reports
         Route::get('/', [AdminController::class, 'dashboard'])->middleware('auth:admins');
+        
+        // Manage Unreviewed Reports
         Route::get('/unreviewed', [ReportController::class, 'unreviewed'])->middleware('auth:admins');
         Route::get('/unreviewed/{report:slug}', [ReportController::class, 'detailUnreviewed'])->middleware('auth:admins');
         Route::post('/unreviewed/{report:slug}/set-fact', [ReportController::class, 'setReviewFact'])->middleware('auth:admins');
         Route::post('/unreviewed/{report:slug}/set-hoax', [ReportController::class, 'setReviewHoax'])->middleware('auth:admins');
-
         Route::post('/unreviewed/delete/{report:slug}', [ReportController::class, 'deleteUnreviewedReport'])->middleware('auth:admins');
 
         // Manage Reviewed Reports
         Route::get('/reviewed', [ReportController::class, 'reviewed'])->middleware('auth:admins');
+        Route::get('/reviewed/{report:slug}', [ReportController::class, 'detailReviewed'])->middleware('auth:admins');
 
         // Manage Admins
         Route::prefix('manage')->group(function () {

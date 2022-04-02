@@ -15,7 +15,7 @@
             <th>Judul Berita</th>
             <th>Nama Pelapor</th>
             <th>Tanggal Lapor</th>
-            {{-- <th>Action</th> --}}
+            <th>Status Report</th>
         </tr>
             @php
                 $num = 1;
@@ -26,12 +26,13 @@
                 <td><a href="/admin/dashboard/reviewed/{{ $report->slug }}">{{ $report->title }}</a></td>
                 <td>{{ $report->user->username }}</td>
                 <td>{{ $report->created_at->format('F j, Y, H:i a') }}</td>
-                {{-- <td>
-                    <form action="/admin/dashboard/unreviewed/delete/{{ $report->slug }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-danger"> Delete </button>
-                    </form>
-                </td> --}}
+                <td>
+                    @if ($report->status_report == 1) {{-- status_report 1 FAKTA --}}
+                        <button type="disable" class="btn btn-success">Fakta</button>
+                    @else
+                        <button class="btn btn-danger disabled">Hoax</button>                        
+                    @endif
+                </td>
                 @php
                     $num+=1;
                 @endphp

@@ -93,4 +93,12 @@ class ReportController extends Controller
         return redirect('/admin/dashboard/unreviewed')->with('success', 'Sukses mereview laporan silahkan cek di bagian reviewed reports');
     }
 
+    public function detailReviewed(Report $report)
+    {
+        return view('admin.detail-reviewed', [
+            'active' => 'reviewed',
+            'report' => $report
+        ]);
+    }
+
 }
