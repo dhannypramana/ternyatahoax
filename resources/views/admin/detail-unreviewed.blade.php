@@ -1,21 +1,25 @@
 @extends('admin.layouts.index')
 
 @section('container')
-    <h3>Judul Berita : {{ $report->title }}</h3>
-    <p>Isi Berita : {{ $report->body }}</p>
-    <p>Link Berita: {{ $report->link }}</p>
-    <p>Disini Gambar {Jika Ada}</p>
-    <p>Di laporkan Oleh : {{ $report->user->username }}</p>
-    <p>Pada Tanggal : {{ $report->created_at->format('F j, Y, H:i a') }}</p>
-    <h1>TAMPILAN NYA DI PERBAGUS NANTI YA BGSD, YG PENTING JALAN DLU FUNGSI NYA</h1>
-    <form action="/admin/dashboard/unreviewed/{{ $report->slug }}/set-fact" method="post">
-        @csrf
-        <button type="submit" class="btn btn-success" name="fact">Fakta</button>
-    </form>
-    <form action="/admin/dashboard/unreviewed/{{ $report->slug }}/set-hoax" method="post">
-        @csrf
-        <button type="submit" class="btn btn-danger" name="hoax">Hoax</button>
-    </form>
-    
-    <a href="/admin/dashboard/unreviewed" class="btn btn-primary">Kembali</a>
+    <div class="card">
+        <div class="card-header">
+            <h3>{{ $report->title }}</h3>
+        </div>
+        <div class="card-body">
+        <p>Sumber: <a href="https://{{ $report->link }}">{{ $report->link }}</a></p>
+            <h5 class="card-small">Di laporkan oleh {{ $report->user->username }} pada tanggal {{ $report->created_at->format('j F Y, H:i a') }}</h5>
+            <p>Disini gambar {Jika Ada}</p>
+            <p class="card-text">Isi berita : {{ $report->body }}</p>
+            <form action="/admin/dashboard/unreviewed/{{ $report->slug }}/set-fact" method="post" class="d-inline">
+                @csrf
+                <button type="submit" class="btn btn-success" name="fact">Fakta</button>
+            </form>
+            <form action="/admin/dashboard/unreviewed/{{ $report->slug }}/set-hoax" method="post" class="d-inline">
+                @csrf
+                <button type="submit" class="btn btn-danger" name="hoax">Hoax</button>
+            </form>
+        </div>
+    </div>
+
+    <a href="/admin/dashboard/unreviewed" class="btn btn-primary mt-3">Kembali</a>
 @endsection

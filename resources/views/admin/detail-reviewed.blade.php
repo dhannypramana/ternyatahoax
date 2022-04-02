@@ -1,18 +1,22 @@
 @extends('admin.layouts.index')
 
 @section('container')
-    <h3>Judul Berita : {{ $report->title }}</h3>
-    <p>Isi Berita : {{ $report->body }}</p>
-    <p>Link Berita: {{ $report->link }}</p>
-    <p>Disini Gambar {Jika Ada}</p>
-    <p>Di laporkan Oleh : {{ $report->user->username }}</p>
-    <p>Pada Tanggal : {{ $report->created_at->format('F j, Y, H:i a') }}</p>
-    @if ($report->status_report == 1) {{-- status_report 1 FAKTA --}}
-        <button type="disable" class="btn btn-success">Fakta</button>
-    @else
-        <button class="btn btn-danger disabled">Hoax</button>                        
-    @endif
-    <h1>TAMPILAN NYA DI PERBAGUS NANTI YA BGSD, YG PENTING JALAN DLU FUNGSI NYA</h1>
-    
-    <a href="/admin/dashboard/reviewed" class="btn btn-primary">Kembali</a>
+    <div class="card">
+        <div class="card-header">
+            <h3>{{ $report->title }}</h3>
+        </div>
+        <div class="card-body">
+        <p>Sumber: <a href="https://{{ $report->link }}">{{ $report->link }}</a></p>
+            <h5 class="card-small">Di laporkan oleh {{ $report->user->username }} pada tanggal {{ $report->created_at->format('j F Y, H:i a') }}</h5>
+            <p>Disini gambar {Jika Ada}</p>
+            <p class="card-text">Isi berita : {{ $report->body }}</p>
+            @if ($report->status_report == 1) {{-- status_report 1 FAKTA --}}
+                <button class="btn btn-success disabled">Fakta</button>
+            @else
+                <button class="btn btn-danger disabled">Hoax</button>                        
+            @endif
+        </div>
+    </div>
+
+    <a href="/admin/dashboard/reviewed" class="btn btn-primary mt-3">Kembali</a>
 @endsection

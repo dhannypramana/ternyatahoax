@@ -40,7 +40,7 @@ class ReportController extends Controller
         ]);
 
         $request->session()->flash('successAdd', 'Sukses lapor');
-        return redirect('/');
+        return redirect('/lapor');
     }
 
     public function unreviewed()
