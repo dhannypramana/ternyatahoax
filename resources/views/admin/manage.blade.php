@@ -38,7 +38,9 @@
             </tr>
         @php $number = $number+1; @endphp
         @endforeach
+    </table>
 
-        </table>            
+    {{ $admins->links() }}
+
     <a href="/admin/dashboard/manage/add" class="btn btn-primary">Tambah Admin</a>
 @endsection

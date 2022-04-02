@@ -47,7 +47,7 @@ class ReportController extends Controller
     {
         return view('admin.unreviewed', [
             'active' => 'unreviewed',
-            'reports' => Report::where('isReviewed', 0)->latest()->get()
+            'reports' => Report::where('isReviewed', 0)->latest()->paginate(5)
         ]);
     }
 
@@ -69,7 +69,7 @@ class ReportController extends Controller
     {
         return view('admin.reviewed', [
             'active' => 'reviewed',
-            'reports' => Report::where('isReviewed', 1)->latest()->get()
+            'reports' => Report::where('isReviewed', 1)->latest()->paginate(5)
         ]);
     }
 

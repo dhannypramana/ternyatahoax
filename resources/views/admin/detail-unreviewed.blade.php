@@ -6,7 +6,7 @@
             <h3>{{ $report->title }}</h3>
         </div>
         <div class="card-body">
-        <p>Sumber: <a href="https://{{ $report->link }}">{{ $report->link }}</a></p>
+        <p>Sumber: <a href="{{ $report->link }}">{{ $report->link }}</a></p>
             <h5 class="card-small">Di laporkan oleh {{ $report->user->username }} pada tanggal {{ $report->created_at->format('j F Y, H:i a') }}</h5>
             <p>Disini gambar {Jika Ada}</p>
             <p class="card-text">Isi berita : {{ $report->body }}</p>

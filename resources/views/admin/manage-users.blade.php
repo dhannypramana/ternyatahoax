@@ -38,6 +38,7 @@
             </tr>
         @php $number = $number+1; @endphp
         @endforeach
-
-        </table>            
+    </table>
+    
+    {{ $users->links() }}
 @endsection

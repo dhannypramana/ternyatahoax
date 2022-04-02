@@ -39,5 +39,8 @@
             </tr>
             @endforeach
     </table>
+
+    {{ $reports->links() }}
+
     <p class="small">*Klik di Judul laporan untuk melihat detail laporan</p>
 @endsection

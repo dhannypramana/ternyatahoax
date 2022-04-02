@@ -51,9 +51,9 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="bi bi-person-circle"></i>
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                <span class="px-2 mr-2 d-none d-lg-inline text-gray-600 small">
                     @if (auth()->user() !== null)
-                        Selamat Datang, {{ auth()->user()->username }}
+                        {{ auth()->user()->username }}
                     @else
                         Not Authorized
                     @endif

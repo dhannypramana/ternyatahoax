@@ -23,22 +23,30 @@ class AdminController extends Controller
     }
     public function dashboard()
     {
+
         return view('admin.dashboard', [
-            'active' => 'dashboard'
+            'active' => 'dashboard',
+            'unreviewed_reports_total' => Report::where('isReviewed', 0)->count(),
+            'reviewed_reports_total' => Report::where('isReviewed', 1)->count(),
+            'reports_total' => Report::count(),
+            'fakta_total' => Report::where('status_report', 1)->count(),
+            'hoax_total' => Report::where('status_report', 0)->count(),
+            'admins_total' => Admin::count(),
+            'users_total' => User::count(),
         ]);
     }
 
     public function manageAdmins()
     {
         return view('admin.manage', [
-            'admins' => Admin::all()->except(auth('admins')->id(1)),
+            'admins' => Admin::whereNotIn('id', [auth('admins')->id(1)])->paginate(5),
             'active' => 'manage'
         ]);
     }
     public function manageUsers()
     {
         return view('admin.manage-users', [
-            'users' => User::all(),
+            'users' => User::paginate(5),
             'active' => 'manage-users'
         ]);
     }
