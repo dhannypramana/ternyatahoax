@@ -24,7 +24,7 @@
     </div>
 </nav> --}}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   <div class="container">
     <a class="navbar-brand" href="/">Ternyata Hoaks</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,7 +87,7 @@
           </li>
         </ul>
       @else
-        <a href="/login" class="btn btn-warning">Login as User</a>
+        <a href="/login" class="btn btn-warning mr-2">Login as User</a>
         <a href="/admin/login" class="btn btn-warning">Login as Admin</a>
       @endauth
     </div>

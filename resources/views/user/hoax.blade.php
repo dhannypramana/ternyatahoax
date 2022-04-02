@@ -1,7 +1,7 @@
 @extends('user.layouts.main')
 
 @section('container')
-<div class="container p-5">
+<div class="container p-5 mt-5">
     <div class="row">
         <!-- Blog entries-->
         <div class="col-lg-8">

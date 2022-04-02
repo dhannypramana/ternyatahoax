@@ -50,6 +50,7 @@
                         <div class="error mx-auto" data-text="403">403</div>
                         <p class="lead text-gray-800 mb-5">Page Forbidden</p>
                         <p class="text-gray-500 mb-0">There's something wrong with your authentication</p>
+                        <p class="text-gray-500 mb-0">Try to log in as <a href="/admin/login">Admin</a> or <a href="/login">User</a></p>
                     </div>
 
                 </div>
