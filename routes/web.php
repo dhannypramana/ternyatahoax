@@ -5,7 +5,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use llluminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Collection;
 
 /*
 |--------------------------------------------------------------------------
