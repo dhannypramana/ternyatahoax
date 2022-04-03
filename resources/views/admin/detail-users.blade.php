@@ -1,28 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User Dashboard</title>
-</head>
-<body>
-    <h1>Selamat Datang, {{ $user->full_name }}</h1>
-    {{ $user->username }} <br>
-    {{ $user->no_telepon_wa }} <br>
-    {{ $user->tgl_lahir }} <br>
-    {{ $user->gender }} <br>
-    {{ $user->username }} <br>
-    {{ $user->email }} <br>
-</body>
-</html>
+@extends('admin.layouts.index')
 
-{{-- 
-    'full_name' => $request->first_name . " " . $request->last_name,
-    'no_telepon_wa' => $request->no_telepon_wa,
-    'tgl_lahir' => $request->tgl_lahir,
-    'gender' => $request->gender,
-    'username' => $request->username,
-    'email' => $request->email,
-    'password' => Hash::make($request->password)
---}}
+@section('container')
+    <div class="container">
+        <div class="main-body">
+              <div class="row gutters-sm justify-content-center">
+                {{-- <div class="col-md-4 mb-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="d-flex flex-column align-items-center text-center">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                        <div class="mt-3">
+                          <h4>John Doe</h4>
+                          <p class="text-secondary mb-1">Full Stack Developer</p>
+                          <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                          <button class="btn btn-primary">Follow</button>
+                          <button class="btn btn-outline-primary">Message</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> --}}
+                <div class="col-md-6">
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Full Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{ $user->full_name }}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Username</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{ $user->username }}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Tanggal Lahir</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{ $user->tgl_lahir }}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Jenis Kelamin</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{ ucwords($user->gender) }}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Email</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{ $user->email }}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Whatsapp</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            +62 {{ $user->no_telepon_wa }}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-2">
+                            <a href="javascript:history.back()" class="btn btn-primary">Kembali</a>
+                        </div>
+                        <div class="col-sm-2">
+                            <a href="/admin/dashboard/manage-users/delete/{{ $user->id }}" class="btn btn-danger">Delete</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+@endsection    

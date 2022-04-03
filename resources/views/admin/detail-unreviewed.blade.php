@@ -21,5 +21,5 @@
         </div>
     </div>
 
-    <a href="/admin/dashboard/unreviewed" class="btn btn-primary mt-3">Kembali</a>
+    <a href="javascript:history.back()" class="btn btn-primary mt-3">Kembali</a>
 @endsection
