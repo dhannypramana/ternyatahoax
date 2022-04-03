@@ -51,9 +51,9 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="bi bi-person-circle"></i>
-                <span class="px-2 mr-2 d-none d-lg-inline text-gray-600 small">
+                <span class="d-none d-lg-inline text-gray-600 small">
                     @if (auth()->user() !== null)
-                        {{ auth()->user()->username }}
+                        {{ auth()->user()->full_name }}
                     @else
                         Not Authorized
                     @endif
@@ -62,7 +62,7 @@
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/profile/{{ auth()->user()->username }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>

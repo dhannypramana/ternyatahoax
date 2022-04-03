@@ -45,15 +45,31 @@ class UserController extends Controller
         ]);
     }
 
+    public function profile(User $user)
+    {
+        return view('user.profile', [
+            'user' => $user
+        ]);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
-            'username' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'first_name' => 'required|min:2|max:32',
+            'last_name' => 'required|min:2|max:32',
+            'no_telepon_wa' => 'required|min:11',
+            'tgl_lahir' => 'required',
+            'gender' => 'required',
+            'username' => 'required|unique:users|min:4',
+            'email' => 'required|unique:users|email:dns',
+            'password' => 'required|min:4|max:32'
         ]);
 
         User::create([
+            'full_name' => $request->first_name . " " . $request->last_name,
+            'no_telepon_wa' => $request->no_telepon_wa,
+            'tgl_lahir' => $request->tgl_lahir,
+            'gender' => $request->gender,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password)

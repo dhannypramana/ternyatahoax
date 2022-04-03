@@ -39,16 +39,26 @@
                             <form class="user" method="POST" action="/admin/dashboard/manage/add">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="username"
-                                        placeholder="Username" name="username" required autofocus>
+                                    <input type="text" class="form-control form-control-user @error('username') is-invalid @enderror" id="username"
+                                        placeholder="Username" name="username" required autofocus value="{{ old('username') }}">
+                                    @error('username')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 {{-- <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="email"
                                         placeholder="Email Address" name="email" required>
                                 </div> --}}
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-user" id="password"
+                                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="password"
                                         placeholder="Password" name="password" required>
+                                        @error('password')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                 </div>
                                 {{-- Repeat Password System --}}
                                 {{-- <div class="form-group row">

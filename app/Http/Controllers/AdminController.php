@@ -53,9 +53,11 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'username' => 'required',
-            'password' => 'required'
+            'username' => 'required|unique:admins|min:3|max:32',
+            'password' => 'required|min:4|max:32'
         ]);
+
+        dd($request);
 
         Admin::create([
             'username' => $request->username,
@@ -86,8 +88,8 @@ class AdminController extends Controller
     public function authenticate(Request $request)
     {
         $request->validate([
-            'username' => 'required',
-            'password' => 'required'
+            'username' => 'required|min:3|max:32',
+            'password' => 'required|min:4|max:32'
         ]);
 
         $credentials = request([

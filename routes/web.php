@@ -70,16 +70,18 @@ Route::prefix('admin')->group(function () {
 Route::get('/', [UserController::class, 'home']);
 Route::get('/login', [UserController::class, 'login'])->middleware('guest');
 Route::post('/login', [UserController::class, 'authenticate']); 
-
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
 Route::post('/register', [UserController::class, 'store']);
-
 Route::post('/logout', [UserController::class, 'logout']);
 // End of User Authentication
-
-Route::get('/fact', [UserController::class, 'fact']);
-Route::get('/hoax', [UserController::class, 'hoax']);
 
 // Manage Reports
 Route::get('/lapor', [ReportController::class, 'index'])->middleware('auth');
 Route::post('/lapor', [ReportController::class, 'store'])->middleware('auth');
+
+// Accessible Non Auth User
+Route::get('/fact', [UserController::class, 'fact']);
+Route::get('/hoax', [UserController::class, 'hoax']);
+
+// Accessible Auth User
+Route::get('/profile/{user:username}', [UserController::class, 'profile']);

@@ -5,7 +5,13 @@
 @endsection
 
 @section('title_page')
-    Dashboard
+    @php
+        if(auth('admins')->user()->username !== 'superadmin'):
+    @endphp 
+            {{ 'Dashboard Admin' }}
+        @else 
+            {{ 'Dashboard Super Admin' }}
+        @endif
 @endsection
 
 @section('container')

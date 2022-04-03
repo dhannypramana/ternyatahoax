@@ -71,13 +71,29 @@
                                     <form class="user" method="POST" action="/admin/login">
                                         @csrf
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
+                                            <input type="text" class="form-control form-control-user @error('username')
+                                                is-invalid
+                                            @enderror"
                                                 id="username" aria-describedby="username" name="username"
-                                                placeholder="Enter Username..." required autofocus>
+                                                placeholder="Enter Username..." required autofocus value="{{ old('username') }}">
+
+                                                @error('username')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" class="form-control form-control-user @error('password')
+                                                is-invalid
+                                            @enderror"
                                                 id="password" placeholder="Password" name="password" required>
+                                                
+                                                @error('password')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
@@ -115,7 +131,5 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/js/sb-admin-2.min.js"></script>
-
 </body>
-
 </html>
