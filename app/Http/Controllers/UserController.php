@@ -71,7 +71,7 @@ class UserController extends Controller
 
         User::create([
             'full_name' => $request->first_name . " " . $request->last_name,
-            'no_telepon_wa' => $request->no_telepon_wa,
+            'no_telepon_wa' => '+62 ' . $request->no_telepon_wa,
             'tgl_lahir' => $request->tgl_lahir,
             'gender' => $request->gender,
             'username' => $request->username,

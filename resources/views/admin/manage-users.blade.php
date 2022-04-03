@@ -25,13 +25,17 @@
         <tr>
             <td>No</td>
             <td>Username</td>
+            <td>Nama</td>
             <td>Action</td>
         </tr>
         @php $number = 1; @endphp
         @foreach ($users as $user)
             <tr>
                 <td>{{ $number }}</td>
-                <td>{{ $user['username'] }}</td>
+                <td>
+                    <a href="/admin/dashboard/manage-users/{{ $user->username }}">{{ $user->username }}</a>
+                </td>
+                <td>{{ $user->full_name }}</td>
                 <td>
                     <a href="/admin/dashboard/manage-users/delete/{{ $user->id }}" class="btn btn-danger">Delete</a>
                 </td>
@@ -39,6 +43,7 @@
         @php $number = $number+1; @endphp
         @endforeach
     </table>
+    <p class="small">*Klik di username untuk melihat detail user</p>
     
     {{ $users->links() }}
 @endsection

@@ -50,6 +50,13 @@ class AdminController extends Controller
             'active' => 'manage-users'
         ]);
     }
+    public function detailManageUsers(User $user)
+    {
+        return view('admin.detail-users', [
+            'user' => $user,
+            'active' => 'manage-users'
+        ]);
+    }
     public function store(Request $request)
     {
         $request->validate([

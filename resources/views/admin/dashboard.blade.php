@@ -5,9 +5,7 @@
 @endsection
 
 @section('title_page')
-    @php
-        if(auth('admins')->user()->username !== 'superadmin'):
-    @endphp 
+    @php if(auth('admins')->user()->username !== 'superadmin'): @endphp 
             {{ 'Dashboard Admin' }}
         @else 
             {{ 'Dashboard Super Admin' }}
@@ -82,7 +80,7 @@
                     </div>
                 </div> --}}
                 <!-- Pending Requests Card Example -->
-                <div class="col-xl-3 col-md-6 mb-4">
+                <div href="#" class="col-xl-3 col-md-6 mb-4">
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -103,8 +101,8 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                        Unreviewed Reports</div>
+                                    <a href="/admin/dashboard/unreviewed" class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        Unreviewed Reports</a>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $unreviewed_reports_total }}</div>
                                 </div>
                                 <div class="col-auto">
@@ -119,8 +117,8 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                        Reviewed Reports</div>
+                                    <a href="/admin/dashboard/reviewed" class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        Reviewed Reports</a>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $reviewed_reports_total }}</div>
                                 </div>
                                 <div class="col-auto">
@@ -168,8 +166,8 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Total Admin</div>
+                                        <a href="/admin/dashboard/manage" class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Total Admin</a>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $admins_total-1 }}</div>
                                     </div>
                                     <div class="col-auto">
@@ -184,8 +182,8 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Total User</div>
+                                        <a href="/admin/dashboard/manage-users" class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Total User</a>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $users_total }}</div>
                                     </div>
                                     <div class="col-auto">

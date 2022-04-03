@@ -54,25 +54,26 @@ Route::prefix('admin')->group(function () {
         // Manage Users
         Route::prefix('manage-users')->group(function () {
             Route::get('/', [AdminController::class, 'manageUsers'])->middleware('isSuper');
+            Route::get('/{user:username}', [AdminController::class, 'detailManageUsers'])->middleware('isSuper');
             Route::get('/delete/{id}', [AdminController::class, 'deleteUser'])->middleware('isSuper');
         });
     });
 
     Route::get('/login', [AdminController::class, 'login'])->middleware('guest:admins');
     Route::get('/register', [AdminController::class, 'register'])->middleware('guest:admins');
-    Route::post('/login', [AdminController::class, 'authenticate']);
+    Route::post('/login', [AdminController::class, 'authenticate'])->middleware('guest:admins');
 
-    Route::post('/register-admin', [AdminController::class, 'store']);
-    Route::post('/logout-admin', [AdminController::class, 'logout']);
+    Route::post('/register-admin', [AdminController::class, 'store'])->middleware('guest:admins');
+    Route::post('/logout-admin', [AdminController::class, 'logout'])->middleware('auth:admins');
 });
 
 // User Authentication
 Route::get('/', [UserController::class, 'home']);
 Route::get('/login', [UserController::class, 'login'])->middleware('guest');
-Route::post('/login', [UserController::class, 'authenticate']); 
+Route::post('/login', [UserController::class, 'authenticate'])->middleware('guest'); 
 Route::get('/register', [UserController::class, 'register'])->middleware('guest');
-Route::post('/register', [UserController::class, 'store']);
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/register', [UserController::class, 'store'])->middleware('guest');
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 // End of User Authentication
 
 // Manage Reports

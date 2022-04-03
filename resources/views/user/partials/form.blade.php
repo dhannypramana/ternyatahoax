@@ -1,15 +1,15 @@
 
-<div class="form-container">
-  <div class="container">
-    @if (session()->has('successAdd'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('successAdd') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-  </div>
+<div class="form-container" style="margin-top: 100px">
+    <div class="container row justify-content-center">
+      @if (session()->has('successAdd'))
+          <div class="alert alert-success alert-dismissible fade show col-lg-6 justify-content-center" role="alert">
+              {{ session('successAdd') }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+      @endif
+    </div>
     <div class="title">Ini Judul</div>
     <form action="/lapor" method="POST">
       @csrf
