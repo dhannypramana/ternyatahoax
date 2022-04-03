@@ -84,4 +84,4 @@ Route::get('/fact', [UserController::class, 'fact']);
 Route::get('/hoax', [UserController::class, 'hoax']);
 
 // Accessible Auth User
-Route::get('/profile/{user:username}', [UserController::class, 'profile']);
+Route::get('/profile/{user:username}', [UserController::class, 'profile'])->middleware('auth');
