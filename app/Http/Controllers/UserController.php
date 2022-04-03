@@ -48,7 +48,7 @@ class UserController extends Controller
     public function profile(User $user)
     {
         if (auth()->user()->username !== $user->username) {
-            abort('403');
+            abort('404');
         }
 
         return view('user.profile', [
