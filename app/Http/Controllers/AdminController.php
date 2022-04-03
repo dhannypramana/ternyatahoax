@@ -64,8 +64,6 @@ class AdminController extends Controller
             'password' => 'required|min:4|max:32'
         ]);
 
-        dd($request);
-
         Admin::create([
             'username' => $request->username,
             'password' => Hash::make($request->password)
