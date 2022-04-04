@@ -22,11 +22,11 @@
                 </div> --}}
                 <div class="col-md-6">
                   <div class="card mb-3">
+                    <div class="card-header p-3 mb-2">
+                      Profile
+                    </div>
                     <div class="card-body">
-                      <div class="card-header p-3 mb-2">
-                        Profile
-                      </div>
-                      <div class="row mt-5">
+                      <div class="row">
                         <div class="col-sm-3">
                           <h6 class="mb-0">Full Name</h6>
                         </div>
@@ -90,19 +90,33 @@
                 </div>
                 <div class="col-md-6">
                   <div class="card">
+                      <div class="card-header p-3">
+                          Status Reports
+                      </div>
                       <div class="card-body">
-                          <div class="card-header p-3 mb-2">
-                              Status Reports
-                          </div>
                           <div class="row p-3">
                               @if ($user->report->first())
+                              @foreach ($user->report as $report)
+                                    @if ($report->isReviewed == 0)
+                                      <div class="col-md-12 card flex-wrap mb-3">
+                                        <div class="card-body">
+                                                <h5 class="card-title">{{ $report->title }}</h5>
+                                                <h6 class="card-subtitle mb-2 text-muted">Kamu melaporkan ini pada {{ $report->created_at->format('F j, Y, H:i a') }}</h6>
+                                                Sumber: <a href="https://{{ $report->link }}" class="card-link">{{ $report->link }}</a>
+                                                <br>
+                                                <br>
+                                                <p class="btn btn-info disabled">Kamu belum melakukan review pada laporan ini</p>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
                                   @foreach ($user->report as $report)
-                                  <div class="card flex-wrap mb-3">
+                                  <div class="col-md-12 card flex-wrap mb-3">
                                       <div class="card-body">
                                           <h5 class="card-title">{{ $report->title }}</h5>
                                           <h6 class="card-subtitle mb-2 text-muted">Kamu melaporkan ini pada {{ $report->created_at->format('F j, Y, H:i a') }}</h6>
                                           Sumber: <a href="https://{{ $report->link }}" class="card-link">{{ $report->link }}</a>
-                                          @if ($report->isReviewed)
+                                          @if ($report->isReviewed == 1)
                                               @if ($report->status_report)
                                                   <br>
                                                   <button class="btn btn-success disabled mt-3">Fakta</button>
@@ -110,9 +124,6 @@
                                                   <br>
                                                   <button class="btn btn-danger disabled mt-3">Hoax</button>
                                               @endif
-                                          @else
-                                              <br>
-                                              <p class="btn btn-danger disabled mt-3">Kamu belum melakukan review pada laporan ini</p>
                                           @endif
                                       </div>
                                   </div>

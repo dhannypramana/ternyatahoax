@@ -1,14 +1,14 @@
 @extends('user.layouts.main')
 
 @section('container')
-<div class="container" style="margin-top: 100px">
-    <div class="row mt-5 justify-content-center" style="margin-top: 100px">
-        <div class="col-md-6 mt-5">
+<div class="container">
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-8 mt-5">
             <div class="card mb-3">
+                <div class="card-header p-3 mb-4 text-center">
+                    Edit Profile
+                </div>
                 <div class="card-body">
-                    <div class="card-header p-3 mb-4">
-                        Edit Profile
-                    </div>
                     <form action="/edit/{{ $user->username }}" method="post">
                         @csrf
                         <div class="row">
