@@ -11,7 +11,7 @@
       @endif
     </div>
     <div class="title">Ini Judul</div>
-    <form action="/lapor" method="POST">
+    <form action="/lapor" method="POST" enctype="multipart/form-data">
       @csrf
         <div class="container">
           <div class="row justify-content-center">

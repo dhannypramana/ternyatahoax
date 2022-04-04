@@ -8,7 +8,9 @@
         <div class="card-body">
         <p>Sumber: <a href="{{ $report->link }}">{{ $report->link }}</a></p>
             <h5 class="card-small">Di laporkan oleh {{ $report->user->username }} pada tanggal {{ $report->created_at->format('j F Y, H:i a') }}</h5>
-            <p>Disini gambar {Jika Ada}</p>
+            @if ($report->image)
+                <img src="{{ asset('/storage/images/' . $report->image) }}" height="500">
+            @endif
             <p class="card-text">Isi berita : {{ $report->body }}</p>
             <form action="/admin/dashboard/unreviewed/{{ $report->slug }}/set-fact" method="post" class="d-inline">
                 @csrf
