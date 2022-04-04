@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
         <p>Sumber: <a href="{{ $report->link }}">{{ $report->link }}</a></p>
-            <h5 class="card-small">Di laporkan oleh {{ $report->user->username }} pada tanggal {{ $report->created_at->format('j F Y, H:i a') }}</h5>
+            <h5 class="card-small">Di laporkan oleh <a href="/admin/dashboard/manage-users/{{ $report->user->username }}">{{ $report->user->full_name }}</a> pada tanggal {{ $report->created_at->format('j F Y, H:i a') }}</h5>
             @if ($report->image)
                 <img src="{{ asset('/storage/images/' . $report->image) }}" height="500">
             @endif

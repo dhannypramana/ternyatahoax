@@ -24,11 +24,11 @@
             <tr>
                 <td>{{ $num }}</td>
                 <td><a href="/admin/dashboard/reviewed/{{ $report->slug }}">{{ $report->title }}</a></td>
-                <td><a href="/admin/dashboard/manage-users/{{ $report->user->username }}">{{ $report->user->username }}</td>
+                <td><a href="/admin/dashboard/manage-users/{{ $report->user->username }}">{{ $report->user->full_name }}</td>
                 <td>{{ $report->created_at->format('F j, Y, H:i a') }}</td>
                 <td>
                     @if ($report->status_report == 1) {{-- status_report 1 FAKTA --}}
-                        <button type="disable" class="btn btn-success">Fakta</button>
+                        <button class="btn btn-success disabled">Fakta</button>
                     @else
                         <button class="btn btn-danger disabled">Hoax</button>                        
                     @endif
