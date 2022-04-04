@@ -73,7 +73,7 @@
                           <h6 class="mb-0">Whatsapp</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            {{ $user->no_telepon_wa }}
+                            +62 {{ $user->no_telepon_wa }}
                         </div>
                       </div>
                       <hr>

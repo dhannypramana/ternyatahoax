@@ -85,3 +85,5 @@ Route::get('/hoax', [UserController::class, 'hoax']);
 
 // Accessible Auth User
 Route::get('/profile/{user:username}', [UserController::class, 'profile'])->middleware('auth');
+Route::get('/edit/{user:username}', [UserController::class, 'edit'])->middleware('auth');
+Route::post('/edit/{user:username}', [UserController::class, 'edit_profile'])->middleware('auth');

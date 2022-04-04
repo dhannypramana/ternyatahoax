@@ -57,6 +57,42 @@ class UserController extends Controller
         ]);
     }
 
+    public function edit(User $user)
+    {
+        if (auth()->user()->username !== $user->username) {
+            abort('404');
+        }
+
+        return view('user.edit-profile', [
+            'active' => 'user',
+            'user' => $user
+        ]);
+    }
+
+    public function edit_profile(User $user, Request $request)
+    {
+        $request->validate([
+            'full_name' => 'required',
+            'no_telepon_wa' => 'required|min:11',
+            'gender' => 'required',
+            'tgl_lahir' => 'required'
+        ]);
+
+        $user->update([
+            'full_name' => $request->full_name,
+            'no_telepon_wa' => $request->no_telepon_wa,
+            'tgl_lahir' => $request->tgl_lahir,
+            'gender' => $request->gender,
+            'username' => $user->username,
+            'email' => $user->email,
+        ]);
+
+        $username = $user->username;
+
+        $request->session()->flash('updateSuccess', 'Kamu telah berhasil melakukan update profile kamu');
+        return redirect('/profile/' . $username);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -72,7 +108,7 @@ class UserController extends Controller
 
         User::create([
             'full_name' => $request->first_name . " " . $request->last_name,
-            'no_telepon_wa' => '+62 ' . $request->no_telepon_wa,
+            'no_telepon_wa' => $request->no_telepon_wa,
             'tgl_lahir' => $request->tgl_lahir,
             'gender' => $request->gender,
             'username' => $request->username,
