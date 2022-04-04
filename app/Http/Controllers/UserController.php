@@ -93,6 +93,14 @@ class UserController extends Controller
         return redirect('/profile/' . $username);
     }
 
+    public function activity_log(User $user)
+    {
+        return view('user.activity-log', [
+            'active' => 'user',
+            'user' => $user
+        ]);
+    }
+
     public function store(Request $request)
     {
         $request->validate([

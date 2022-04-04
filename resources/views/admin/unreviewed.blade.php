@@ -33,7 +33,7 @@
                 <tr>
                     <td>{{ $num }}</td>
                     <td><a href="/admin/dashboard/unreviewed/{{ $report->slug }}">{{ $report->title }}</a></td>
-                    <td>{{ $report->user->username }}</td>
+                    <td><a href="/admin/dashboard/manage-users/{{ $report->user->username }}">{{ $report->user->username }}</td>
                     <td>{{ $report->created_at->format('F j, Y, H:i a') }}</td>
                     <td>
                         <form action="/admin/dashboard/unreviewed/delete/{{ $report->slug }}" method="POST">

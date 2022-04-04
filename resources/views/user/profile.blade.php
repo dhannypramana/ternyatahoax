@@ -92,7 +92,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $report->title }}</h5>
                                         <h6 class="card-subtitle mb-2 text-muted">Kamu melaporkan ini pada {{ $report->created_at->format('F j, Y, H:i a') }}</h6>
-                                        Sumber: <a href="{{ $report->link }}" class="card-link">{{ $report->link }}</a>
+                                        Sumber: <a href="https://{{ $report->link }}" class="card-link">{{ $report->link }}</a>
                                         @if ($report->isReviewed)
                                             @if ($report->status_report)
                                                 <br>
