@@ -74,7 +74,7 @@ class ReportController extends Controller
     public function deleteUnreviewedReport(Report $report)
     {
         $report->delete();
-        Storage::delete('/public/storage/images/'.$report->image); //Delete not working
+        Storage::delete(asset('/storage/images/' . $report->image)); //Delete not working
         return back()->with('success', 'Sukses hapus data laporan yang belum di review');
     }
 
