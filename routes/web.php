@@ -55,7 +55,7 @@ Route::prefix('admin')->group(function () {
         Route::prefix('manage-users')->group(function () {
             Route::get('/', [AdminController::class, 'manageUsers'])->middleware('isSuper');
             Route::get('/{user:username}', [AdminController::class, 'detailManageUsers'])->middleware('isSuper');
-            Route::get('/delete/{id}', [AdminController::class, 'deleteUser'])->middleware('isSuper');
+            // Route::get('/delete/{id}', [AdminController::class, 'deleteUser'])->middleware('isSuper');
         });
     });
 
@@ -76,8 +76,8 @@ Route::post('/register', [UserController::class, 'store'])->middleware('guest');
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 // Manage Reports
-Route::get('/lapor', [ReportController::class, 'index'])->middleware('auth');
-Route::post('/lapor', [ReportController::class, 'store'])->middleware('auth');
+Route::get('/lapor', [ReportController::class, 'index']);
+Route::post('/lapor', [ReportController::class, 'store']);
 
 // Accessible Non Auth User
 Route::get('/fact', [UserController::class, 'fact']);

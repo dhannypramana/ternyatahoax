@@ -17,6 +17,9 @@ class ReportController extends Controller
      */
     public function index()
     {
+        if (auth()->guest()) {
+            return redirect('/login')->with('info', 'Silahkan lakukan login terlebih dahulu');
+        }
         return view('user.lapor', [
             'active' => 'null'
         ]);
@@ -24,10 +27,13 @@ class ReportController extends Controller
 
     public function store(Request $request)
     {
+        if (auth()->guest()) {
+            return redirect('/login')->with('info', 'Silahkan lakukan login terlebih dahulu');
+        }
+
         $user_id = auth()->user()->id;
         $slug = SlugFormatter::generateSlug($request->title);
-        
-        
+
         $request->validate([
             'title' => 'required',
             'body' => 'required',

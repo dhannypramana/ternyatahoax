@@ -73,16 +73,13 @@
                           <h6 class="mb-0">Whatsapp</h6>
                         </div>
                         <div class="col-sm-9 text-secondary">
-                            +62 {{ $user->no_telepon_wa }}
+                            {{ $user->no_telepon_wa }}
                         </div>
                       </div>
                       <hr>
                       <div class="row">
                         <div class="col-sm-2">
                             <a href="javascript:history.back()" class="btn btn-primary">Kembali</a>
-                        </div>
-                        <div class="col-sm-2">
-                            <a href="/admin/dashboard/manage-users/delete/{{ $user->id }}" class="btn btn-danger">Delete</a>
                         </div>
                       </div>
                     </div>
