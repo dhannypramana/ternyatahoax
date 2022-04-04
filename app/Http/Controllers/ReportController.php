@@ -40,16 +40,25 @@ class ReportController extends Controller
             $imgName        = time() . date('dmyHis') . rand() . '.' . $extension;
 
             Storage::putFileAs('images', $request->file('image'), $imgName);
+            
+            Report::create([
+                'title' => $request->title,
+                'body' => $request->body,
+                'link' => $request->link,
+                'slug' => $slug,
+                'image' => $imgName,
+                'user_id' => $user_id,
+            ]);
+        } else {
+            Report::create([
+                'title' => $request->title,
+                'body' => $request->body,
+                'link' => $request->link,
+                'slug' => $slug,
+                'user_id' => $user_id,
+            ]);
         }
         
-        Report::create([
-            'title' => $request->title,
-            'body' => $request->body,
-            'link' => $request->link,
-            'slug' => $slug,
-            'user_id' => $user_id,
-            'image' => $imgName,
-        ]);
 
         $request->session()->flash('successAdd', 'Sukses lapor');
         return redirect('/lapor');

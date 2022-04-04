@@ -17,39 +17,43 @@
             </button>
         </div>
     @endif
-    <table class="table table-bordered">
-        <tr>
-            <th>No.</th>
-            <th>Judul Berita</th>
-            <th>Nama Pelapor</th>
-            <th>Tanggal Lapor</th>
-            <th>Action</th>
-        </tr>
-            @php
-                $num = 1;
-                @endphp
-            @foreach ($reports as $report)
+    @if ($reports->first())
+        <table class="table table-bordered">
             <tr>
-                <td>{{ $num }}</td>
-                <td><a href="/admin/dashboard/unreviewed/{{ $report->slug }}">{{ $report->title }}</a></td>
-                <td>{{ $report->user->username }}</td>
-                <td>{{ $report->created_at->format('F j, Y, H:i a') }}</td>
-                <td>
-                    <form action="/admin/dashboard/unreviewed/delete/{{ $report->slug }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-danger"> Delete </button>
-                    </form>
-                </td>
-                @php
-                    $num+=1;
-                @endphp
+                <th>No.</th>
+                <th>Judul Berita</th>
+                <th>Nama Pelapor</th>
+                <th>Tanggal Lapor</th>
+                <th>Action</th>
             </tr>
-            @endforeach
-    </table>
+                @php
+                    $num = 1;
+                    @endphp
+                @foreach ($reports as $report)
+                <tr>
+                    <td>{{ $num }}</td>
+                    <td><a href="/admin/dashboard/unreviewed/{{ $report->slug }}">{{ $report->title }}</a></td>
+                    <td>{{ $report->user->username }}</td>
+                    <td>{{ $report->created_at->format('F j, Y, H:i a') }}</td>
+                    <td>
+                        <form action="/admin/dashboard/unreviewed/delete/{{ $report->slug }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-danger"> Delete </button>
+                        </form>
+                    </td>
+                    @php
+                        $num+=1;
+                    @endphp
+                </tr>
+                @endforeach
+            </table>
+            <p class="small">*Klik di Judul laporan untuk melihat detail laporan</p>
+    @else
+        <p class="btn btn-primary disabled">No Unreviewed Reports, Good Job!</p>
+    @endif
 
     {{ $reports->links() }}
 
-    <p class="small">*Klik di Judul laporan untuk melihat detail laporan</p>
 @endsection 
 
 @section('ajax_script')
