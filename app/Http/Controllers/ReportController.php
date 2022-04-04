@@ -59,7 +59,7 @@ class ReportController extends Controller
             'user_id' => $user_id,
         ]);
 
-        $request->session()->flash('successAdd', 'Sukses lapor');
+        $request->session()->flash('successAdd', 'Terima kasih atas feedback kamu, laporan kamu akan segera di review');
         return redirect('/lapor');
     }
 

@@ -1,9 +1,9 @@
 <div class="form-container" style="margin-top: 100px">
-    <div class="container row justify-content-center">
+    <div class="container row justify-content-center mx-auto text-center">
       @if (session()->has('successAdd'))
-          <div class="alert alert-success alert-dismissible fade show col-lg-6 justify-content-center" role="alert">
+          <div class="alert alert-success alert-dismissible fade show col-lg-6" role="alert">
               {{ session('successAdd') }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
           </div>
@@ -16,7 +16,7 @@
           <div class="row justify-content-center">
             <div class="form-group col-lg-6">
               <label for="exampleFormControlInput1">Judul Postingan</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ini Judul" name="title">
+              <input type="text" class="form-control @error('title') is-invalid @enderror" id="exampleFormControlInput1" placeholder="Ini Judul" name="title">
               @error('title')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -27,7 +27,7 @@
           <div class="row justify-content-center">
             <div class="form-group col-lg-6">
               <label for="exampleFormControlTextarea1">Isi Postingan</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="body"></textarea>
+              <textarea class="form-control @error('body') is-invalid @enderror" id="exampleFormControlTextarea1" rows="3" name="body"></textarea>
               @error('body')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -49,7 +49,7 @@
           <div class="row justify-content-center">
             <div class="form-group col-lg-6">
                 <label for="exampleFormControlInput1">Sumber Postingan</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="ini link" name="link">
+                <input type="text" class="form-control @error('link') is-invalid @enderror" id="exampleFormControlInput1" placeholder="ini link" name="link">
                 @error('link')
                   <div class="invalid-feedback">
                       {{ $message }}
