@@ -35,36 +35,29 @@ class ReportController extends Controller
         $slug = SlugFormatter::generateSlug($request->title);
 
         $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'link' => 'required',
-            'image' => 'file|image|mimes:jpg,jpeg,png',
+            'title' => 'required|min:5',
+            'body' => 'required|min:5',
+            'link' => 'required|min:5',
+            'image' => 'file|image|mimes:jpg,jpeg,png|unique:reports',
         ]);
+
+        $imgName = "";
 
         if($request->has('image')){
             $extension      = $request->file('image')->extension();
             $imgName        = time() . date('dmyHis') . rand() . '.' . $extension;
 
             Storage::putFileAs('images', $request->file('image'), $imgName);
-            
-            Report::create([
-                'title' => $request->title,
-                'body' => $request->body,
-                'link' => $request->link,
-                'slug' => $slug,
-                'image' => $imgName,
-                'user_id' => $user_id,
-            ]);
-        } else {
-            Report::create([
-                'title' => $request->title,
-                'body' => $request->body,
-                'link' => $request->link,
-                'slug' => $slug,
-                'user_id' => $user_id,
-            ]);
         }
-        
+
+        Report::create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'link' => $request->link,
+            'slug' => $slug,
+            'image' => $imgName,
+            'user_id' => $user_id,
+        ]);
 
         $request->session()->flash('successAdd', 'Sukses lapor');
         return redirect('/lapor');
