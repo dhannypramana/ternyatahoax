@@ -11,7 +11,7 @@
             @if ($report->image)
                 <img src="{{ asset('/storage/images/' . $report->image) }}" height="500">
             @endif
-            <p class="card-text">Isi berita : {{ $report->body }}</p>
+            <p class="card-text">{!! $report->body !!}</p>
             <form action="/admin/dashboard/unreviewed/{{ $report->slug }}/set-fact" method="post" class="d-inline">
                 @csrf
                 <button type="submit" class="btn btn-success" name="fact">Fakta</button>

@@ -100,8 +100,8 @@
                                     @if ($report->isReviewed == 0)
                                       <div class="col-md-12 card flex-wrap mb-3">
                                         <div class="card-body">
-                                                <h5 class="card-title">{{ $report->title }}</h5>
-                                                <h6 class="card-subtitle mb-2 text-muted">Kamu melaporkan ini pada {{ $report->created_at->format('F j, Y, H:i a') }}</h6>
+                                                <a class="card-title h5" href="/admin/dashboard/unreviewed/{{ $report->slug }}">{{ $report->title }}</a>
+                                                <h6 class="card-subtitle mb-2 mt-2 text-muted">Kamu melaporkan ini pada {{ $report->created_at->format('F j, Y, H:i a') }}</h6>
                                                 Sumber: <a href="https://{{ $report->link }}" class="card-link">{{ $report->link }}</a>
                                                 <br>
                                                 <br>
@@ -111,10 +111,11 @@
                                     @endif
                                 @endforeach
                                   @foreach ($user->report as $report)
+                                  @if ($report->isReviewed == 1)
                                   <div class="col-md-12 card flex-wrap mb-3">
                                       <div class="card-body">
-                                          <h5 class="card-title">{{ $report->title }}</h5>
-                                          <h6 class="card-subtitle mb-2 text-muted">Kamu melaporkan ini pada {{ $report->created_at->format('F j, Y, H:i a') }}</h6>
+                                          <a class="card-title h5" href="/admin/dashboard/reviewed/{{ $report->slug }}">{{ $report->title }}</a>
+                                          <h6 class="card-subtitle mb-2 mt-2 text-muted">Kamu melaporkan ini pada {{ $report->created_at->format('F j, Y, H:i a') }}</h6>
                                           Sumber: <a href="https://{{ $report->link }}" class="card-link">{{ $report->link }}</a>
                                           @if ($report->isReviewed == 1)
                                               @if ($report->status_report)
@@ -127,6 +128,7 @@
                                           @endif
                                       </div>
                                   </div>
+                                  @endif
                                   @endforeach
                               @else
                                   <div class="text-center mt-3">

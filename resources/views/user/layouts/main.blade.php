@@ -10,6 +10,15 @@
     
     <link rel="stylesheet" href={{ asset('/css/index.css') }} >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    
+    {{-- Trix --}}
+    <link rel="stylesheet" href="/css/trix.css">
+    <script type="text/javascript" src="/js/trix.js"></script>
+    <style>
+      trix-toolbar [data-trix-button-group="file-tools"] {
+        display: none;
+      }
+    </style>
     <title>Ternyata Hoax - Landing Page</title>
     <style>
       a{
@@ -40,6 +49,12 @@
     <!-- Page level custom scripts -->
     <script src="/js/demo/chart-area-demo.js"></script>
     <script src="/js/demo/chart-pie-demo.js"></script>
+
+    <script>
+      document.addEventListener("trix-file-accept", event => {
+        event.preventDefault()
+      })
+    </script>
 
   </body>
 </html>

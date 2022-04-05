@@ -21,7 +21,7 @@
         <table class="table table-bordered">
             <tr>
                 <th>No.</th>
-                <th>Judul Berita</th>
+                <th class="col-lg-4">Judul Berita</th>
                 <th>Nama Pelapor</th>
                 <th>Tanggal Lapor</th>
                 <th>Action</th>

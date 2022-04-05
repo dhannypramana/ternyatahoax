@@ -27,7 +27,8 @@
           <div class="row justify-content-center">
             <div class="form-group col-lg-6">
               <label for="exampleFormControlTextarea1">Isi Postingan</label>
-              <textarea class="form-control @error('body') is-invalid @enderror" id="exampleFormControlTextarea1" rows="3" name="body"></textarea>
+              <input type="hidden" name="body" id="body" class="@error('body') is-invalid @enderror">
+              <trix-editor input="body"></trix-editor>
               @error('body')
                 <div class="invalid-feedback">
                     {{ $message }}

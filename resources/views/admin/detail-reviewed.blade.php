@@ -8,10 +8,10 @@
         <div class="card-body">
         <p>Sumber: <a href="{{ $report->link }}">{{ $report->link }}</a></p>
             <h5 class="card-small">Di laporkan oleh <a href="/admin/dashboard/manage-users/{{ $report->user->username }}">{{ $report->user->full_name }}</a> pada tanggal {{ $report->created_at->format('j F Y, H:i a') }}</h5>
-            {{-- @if ($report->image) --}}
+            @if ($report->image)
                 <img src="{{ asset('/storage/images/' . $report->image) }}" height="500">
-            {{-- @endif --}}
-            <p class="card-text">Isi berita : {{ $report->body }}</p>
+            @endif
+            <p class="card-text">Isi berita : {!! $report->body !!}</p>
             @if ($report->status_report == 1) {{-- status_report 1 FAKTA --}}
                 <button class="btn btn-success disabled">Fakta</button>
             @else
