@@ -39,4 +39,9 @@ class Report extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function categoryhoax()
+    {
+        return $this->hasOne(CategoryHoax::class);
+    }
 }

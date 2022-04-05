@@ -26,6 +26,7 @@ class CreateReportsTable extends Migration
             $table->boolean('isReviewed')->default(0);
             $table->string('status_report')->nullable();
             $table->foreignId('user_id');
+            $table->foreignId('categoryhoax_id')->nullable();
         });
     }
 

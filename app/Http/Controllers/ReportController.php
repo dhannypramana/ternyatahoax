@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Report;
 use Illuminate\Http\Request;
 use App\Helpers\SlugFormatter;
+use App\Models\CategoryHoax;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -98,7 +99,8 @@ class ReportController extends Controller
     {
         $report->update([
             'isReviewed' => 1,
-            'status_report' => 0
+            'status_report' => 0,
+            'categoryhoax_id' => 7
         ]);
 
         return redirect('/admin/dashboard/unreviewed')->with('success', 'Sukses mereview laporan silahkan cek di bagian reviewed reports');
@@ -119,6 +121,14 @@ class ReportController extends Controller
         return view('admin.detail-reviewed', [
             'active' => 'reviewed',
             'report' => $report
+        ]);
+    }
+
+    public function category()
+    {
+        return view('admin.category', [
+            'active' => 'category',
+            'categories' => CategoryHoax::get()
         ]);
     }
 

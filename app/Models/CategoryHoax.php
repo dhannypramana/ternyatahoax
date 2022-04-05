@@ -30,4 +30,9 @@ class CategoryHoax extends Model
     protected $hidden = [
         'remember_token',
     ];
+
+    public function report()
+    {
+        return $this->hasMany(Report::class);
+    }
 }

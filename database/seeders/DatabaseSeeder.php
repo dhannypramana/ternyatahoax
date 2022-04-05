@@ -32,49 +32,49 @@ class DatabaseSeeder extends Seeder
             'level' => 1,
             'category' => 'Satire atau Parody',
             'description' => 'Tidak ada niat untuk merugikan namun berpotensi untuk mengelabui',
-            'slug' => SlugFormatter::generateSlug('satir_parody')
+            'slug' => SlugFormatter::generateSlug('satire parody')
         ]);
 
         CategoryHoax::create([
             'level' => 2,
             'category' => 'False Connection',
             'description' => 'Ketika judul, gambar, atau keterangan, tidak mendukung konten',
-            'slug' => SlugFormatter::generateSlug('false_connection')
+            'slug' => SlugFormatter::generateSlug('false connection')
         ]);
 
         CategoryHoax::create([
             'level' => 3,
             'category' => 'Misleading Content',
             'description' => 'Penggunaan informasi yang untuk membingkai sebuah isu atau individu',
-            'slug' => SlugFormatter::generateSlug('misleading_content')
+            'slug' => SlugFormatter::generateSlug('misleading content')
         ]);
 
         CategoryHoax::create([
             'level' => 4,
-            'category' => 'false_context',
+            'category' => 'False Context',
             'description' => 'Ketika konten yang asli dipadankan dengan konteks informasi yang salah',
-            'slug' => SlugFormatter::generateSlug('false_context')
+            'slug' => SlugFormatter::generateSlug('false context')
         ]);
 
         CategoryHoax::create([
             'level' => 5,
             'category' => 'Imposter Content',
             'description' => 'Ketika sebuah sumber asli ditiru',
-            'slug' => SlugFormatter::generateSlug('imposter_content')
+            'slug' => SlugFormatter::generateSlug('imposter content')
         ]);
 
         CategoryHoax::create([
             'level' => 6,
             'category' => 'Manipulated Content',
             'description' => 'Ketika sebuah informasi di manipulasi untuk merusak atau menipu',
-            'slug' => SlugFormatter::generateSlug('manipulated_content')
+            'slug' => SlugFormatter::generateSlug('manipulated content')
         ]);
 
         CategoryHoax::create([
             'level' => 7,
             'category' => 'Fabricated Content',
             'description' => 'Konten baru yang disengaja di buat dan di desain untuk menipu dan merugikan',
-            'slug' => SlugFormatter::generateSlug('fabricated_content')
+            'slug' => SlugFormatter::generateSlug('fabricated content')
         ]);
     }
 }

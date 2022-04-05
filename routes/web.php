@@ -41,6 +41,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/reviewed', [ReportController::class, 'reviewed'])->middleware('auth:admins');
         Route::get('/reviewed/{report:slug}', [ReportController::class, 'detailReviewed'])->middleware('auth:admins');
 
+        // Manage Category Hpax
+        Route::get('/category', [ReportController::class, 'category'])->middleware('auth:admins');
+
         // Manage Admins
         Route::prefix('manage')->group(function () {
             Route::get('/', [AdminController::class, 'manageAdmins'])->middleware('isSuper');
