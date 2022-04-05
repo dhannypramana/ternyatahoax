@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="container">
-        <div class="main-body">
+        <div class="main-body mb-4">
               <div class="row gutters-sm justify-content-center">
                 {{-- <div class="col-md-4 mb-3">
                   <div class="card">
