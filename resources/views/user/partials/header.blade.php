@@ -5,10 +5,17 @@
                 <h1 class="text-white font-weight-bold">Ternyata Hoaks</h1>
                 <hr class="divider" />
             </div>
-            <div class="col-lg-8 align-self-baseline">
-                <p class="text-white-75 mb-5">Lapor berita dan cek faktanya</p>
-                <a class="btn btn-primary btn-xl" href="/lapor">Lapor</a>
-            </div>
+            @if(auth()->user() !== null)
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 mb-5">Lapor berita dan cek faktanya</p>
+                    <a class="btn btn-primary btn-xl" href="/lapor">Lapor</a>
+                </div>
+            @else
+                <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 mb-5">Lapor berita dan cek faktanya</p>
+                    <a class="btn btn-primary btn-xl" href="/register">Daftar Sekarang</a>
+                </div>
+            @endif
         </div>
     </div>
 </header>

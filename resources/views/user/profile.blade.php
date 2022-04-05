@@ -119,6 +119,12 @@
                                         </div>
                                     @endif
                                 @endforeach
+                                
+                                <div class="text-center mt-3">
+                                    <p>Masih ada yang mau di laporkan? 
+                                        <a href="/lapor">Ayo Lapor sekarang!</a>
+                                    </p>
+                                </div>
                             @else
                                 <div class="text-center mt-3">
                                     <p>Kamu belum mempunyai laporan
