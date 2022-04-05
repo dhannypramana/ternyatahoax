@@ -31,7 +31,7 @@
                         </div>
                         <div class="col-lg-12 mt-3">
                             <input type="hidden" name="body" id="body" class="@error('body') is-invalid @enderror">
-                            <trix-editor input="body" placeholder="Masukkan isi berita yang kamu temukan"></trix-editor>
+                            <trix-editor input="body" placeholder="Masukkan isi berita tersebut"></trix-editor>
                             @error('body')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -59,7 +59,7 @@
                             <h5 class="mb-0">Sumber Postingan <sup class="text-danger"><sup>*</sup>Required</sup></h5>
                         </div>
                         <div class="col-lg-12 mt-3">
-                            <input type="text" name="link" class="p-3 form-control @error('link') is-invalid @enderror" placeholder="Masukkan gambar berita tersebut (Jika Ada)">
+                            <input type="text" name="link" class="p-3 form-control @error('link') is-invalid @enderror" placeholder="Masukkan sumber berita tersebut">
                             @error('link')
                                 <div class="invalid-feedback">
                                     {{ $message }}
