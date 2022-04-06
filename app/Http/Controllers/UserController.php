@@ -125,7 +125,7 @@ class UserController extends Controller
         ]);
 
         $request->session()->flash('success', 'Registration Sucess, Please Login');
-        return redirect('/login');        
+        return redirect('/login');
     }
 
     public function authenticate(Request $request)
