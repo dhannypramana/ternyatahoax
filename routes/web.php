@@ -82,12 +82,13 @@ Route::post('/register', [UserController::class, 'store'])->middleware('guest');
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 // Manage Reports
-Route::get('/lapor', [ReportController::class, 'index']);
-Route::post('/lapor', [ReportController::class, 'store']);
+Route::get('/lapor', [ReportController::class, 'index'])->middleware('auth');
+Route::post('/lapor', [ReportController::class, 'store'])->middleware('auth');
 
 // Accessible Non Auth User
 Route::get('/fact', [UserController::class, 'fact']);
 Route::get('/hoax', [UserController::class, 'hoax']);
+Route::get('/blog/{report:slug}', [UserController::class, 'blog']);
 
 // Accessible Auth User
 Route::get('/profile/{user:username}', [UserController::class, 'profile'])->middleware('auth');

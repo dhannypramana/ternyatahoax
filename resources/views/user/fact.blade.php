@@ -22,7 +22,7 @@
                         <p class="card-text">
                             {!! $report->excerpt !!}
                         </p>
-                        <a class="btn btn-primary" href="fact/detail">Read more →</a>
+                        <a class="btn btn-primary" href="/blog/{{ $report->slug }}">Read more →</a>
                     </div>
                 </div>
             @endforeach

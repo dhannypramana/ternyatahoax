@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function blog(Report $report)
+    {
+        return view('user.detail', [
+            'active' => 'active',
+            'report' => $report
+        ]);
+    }
+
     public function login()
     {
         return view('user.login');
