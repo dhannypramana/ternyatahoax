@@ -9,6 +9,7 @@
 @endsection
 
 @section('container')
+@if ($reports->first())
     <table class="table table-bordered">
         <tr>
             <th>No.</th>
@@ -39,8 +40,11 @@
             </tr>
             @endforeach
     </table>
-
-    {{ $reports->links() }}
-
     <p class="small">*Klik di Judul laporan untuk melihat detail laporan</p>
+@else
+    <p class="border bg-primary p-4 text-white text-center">No Reviewed Reports</p>
+@endif
+
+{{ $reports->links() }}
+
 @endsection

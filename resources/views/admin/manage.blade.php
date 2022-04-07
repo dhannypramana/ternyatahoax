@@ -21,7 +21,9 @@
             </button>
         </div>
     @endif
-    <table class="table table-bordered">
+
+    @if ($admins->first())
+    <table class="table table-bordered bg-primary text-white">
         <tr>
             <td>No</td>
             <td>Username</td>
@@ -39,8 +41,10 @@
         @php $number = $number+1; @endphp
         @endforeach
     </table>
-
-    {{ $admins->links() }}
+    @else
+        <p class="border bg-primary p-4 text-white text-center">No Admins</p>
+    @endif
 
     <a href="/admin/dashboard/manage/add" class="btn btn-primary">Tambah Admin</a>
+    {{ $admins->links() }}
 @endsection

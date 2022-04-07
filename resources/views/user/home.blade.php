@@ -10,7 +10,11 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <a class="btn btn-primary btn-lg p-3" style="margin-bottom: 100px" href="#" role="button">Daftar Sekarang </a>
+                @if (auth()->user())
+                    <a class="btn btn-primary btn-lg p-3" style="margin-bottom: 100px" href="/lapor" role="button">Ayo Lapor Sekarang! </a>
+                @else
+                    <a class="btn btn-primary btn-lg p-3" style="margin-bottom: 100px" href="#" role="button">Daftar Sekarang </a>
+                @endif
             </div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -77,50 +81,32 @@
                 </div>
             </div>
             <div class="row gx-lg-5 justify-content-center">
-                <div class="col-md-3 mb-3">
-                    <div class="card">
-                        <img src="https://picsum.photos/200" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-success fw-bold">Fakta</h6>
-                            <h5 class="card-title text-center">Ini Judul</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link text-decoration-none">Lihat Selengkapnya</a>
+                @foreach ($reports as $report)
+                    <div class="col-md-3 mb-3">
+                        @if ($report->isReviewed == 1)
+                        <div class="card">
+                            @if ($report->image != null)
+                                <img class="card-img-top" style="object-fit: cover" height="300" src="{{ asset('/storage/images/' . $report->image) }}"/>
+                            @else
+                                <img class="card-img-top" src="https://dummyimage.com/850x890/fafafa/050726.jpg&text=+No+Image+Found"/>                        
+                            @endif
+                        @endif
+                                <div class="card-body">
+                                @if ($report->isReviewed == 1)
+                                    @if ($report->status_report == 1)
+                                        <h6 class="card-subtitle mb-2 text-success fw-bold">Fakta</h6>
+                                    @else
+                                        <h6 class="card-subtitle mb-2 text-danger fw-bold">{{ $report->categoryhoax->category }}</h6>
+                                    @endif
+                                    
+                                    <h5 class="card-title text-center mb-4">{{ $report->title }}</h5>
+                                    <p class="card-text text-justify">{{ $report->excerpt }}</p>
+                                    <a href="/blog/{{ $report->slug }}" class="card-link text-decoration-none">Lihat Selengkapnya</a>
+                                @endif
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <div class="card">
-                        <img src="https://picsum.photos/200" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-danger fw-bold">Hoax</h6>
-                            <h5 class="card-title text-center">Ini Judul</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link text-decoration-none">Lihat Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <div class="card">
-                        <img src="https://picsum.photos/200" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-success fw-bold">Fakta</h6>
-                            <h5 class="card-title text-center">Ini Judul</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link text-decoration-none">Lihat Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <div class="card">
-                        <img src="https://picsum.photos/200" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="card-subtitle mb-2 text-danger fw-bold">Hoax</h6>
-                            <h5 class="card-title text-center">Ini Judul</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link text-decoration-none">Lihat Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0d6efd" fill-opacity="1" d="M0,32L48,58.7C96,85,192,139,288,154.7C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,218.7C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
@@ -207,4 +193,5 @@
         </div>
     </footer>
     {{-- Footer End --}}
+    {{ $reports->links() }}
 @endsection

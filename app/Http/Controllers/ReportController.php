@@ -18,17 +18,18 @@ class ReportController extends Controller
      */
     public function index()
     {
-        if (auth()->guest()) {
+        if (auth()->user() == null) {
             return redirect('/login')->with('info', 'Silahkan lakukan login terlebih dahulu');
         }
+
         return view('user.lapor', [
-            'active' => 'null'
+            'active' => 'home',
         ]);
     }
 
     public function store(Request $request)
     {
-        if (auth()->guest()) {
+        if (auth()->user() == null) {
             return redirect('/login')->with('info', 'Silahkan lakukan login terlebih dahulu');
         }
 

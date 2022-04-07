@@ -49,7 +49,7 @@
             </table>
             <p class="small">*Klik di Judul laporan untuk melihat detail laporan</p>
     @else
-        <p class="btn btn-primary disabled">No Unreviewed Reports, Good Job!</p>
+        <p class="border bg-primary p-4 text-white text-center">No Unreviewed Reports, Good Job!</p>
     @endif
 
     {{ $reports->links() }}

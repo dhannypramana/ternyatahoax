@@ -196,7 +196,7 @@
                 @endif
             </div>
             <!-- Content Row -->
-            <div class="row">
+            {{-- <div class="row">
                 <!-- Area Chart -->
                 <div class="col-xl-8 col-lg-7">
                     <div class="card shadow mb-4">
@@ -268,9 +268,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- Content Row -->
-            <div class="row">
+            {{-- <div class="row">
                 <!-- Content Column -->
                 <div class="col-lg-6 mb-4">
                     <!-- Project Card Example -->
@@ -412,7 +412,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 <!-- End of Main Content -->
 @endsection

@@ -12,9 +12,9 @@
                 </div>
                 <div class="card mb-4">
                     @if ($report->image != null)
-                        <a href="#!"><img class="card-img-top" src="{{ asset('/storage/images/' . $report->image) }}"/></a>
+                        <img style="object-fit: cover;object-position:center" height="300" class="card-img-top" src="{{ asset('/storage/images/' . $report->image) }}"/>
                     @else
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/fafafa/050726.jpg&text=+No+Image+Found"/></a>                        
+                        <img class="card-img-top" src="https://dummyimage.com/850x350/fafafa/050726.jpg&text=+No+Image+Found"/>                        
                     @endif
                     <div class="card-body">
                         <div class="small text-muted">{{ $report->created_at->format('j F Y, H:i a') }} {{ $report->created_at->diffForHumans() }}</div>

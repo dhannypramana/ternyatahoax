@@ -21,6 +21,7 @@
             </button>
         </div>
     @endif
+    @if ($users->first())
     <table class="table table-bordered">
         <tr>
             <td>No</td>
@@ -40,6 +41,9 @@
         @endforeach
     </table>
     <p class="small">*Klik di username untuk melihat detail user</p>
+    @else
+        <p class="border bg-primary p-4 text-white text-center">No Users</p>
+    @endif
     
     {{ $users->links() }}
 @endsection
