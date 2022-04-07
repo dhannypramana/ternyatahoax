@@ -22,7 +22,7 @@
                 @if ($report->image != null)
                         <img class="card-img-top" src="{{ asset('/storage/images/' . $report->image) }}"/>
                 @else
-                    <img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"/>                        
+                    <img class="card-img-top" src="https://dummyimage.com/850x350/fafafa/050726.jpg&text=+No+Image+Found"/>                        
                 @endif
                 <!-- Post content-->
                 <section class="mt-3 mb-5">

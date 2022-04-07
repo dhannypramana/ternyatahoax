@@ -17,7 +17,7 @@
                         <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/fafafa/050726.jpg&text=+No+Image+Found"/></a>                        
                     @endif
                     <div class="card-body">
-                        <div class="small text-muted">{{ $report->created_at->format('F j, Y, H:i a') }}</div>
+                        <div class="small text-muted">{{ $report->created_at->format('j F Y, H:i a') }} {{ $report->created_at->diffForHumans() }}</div>
                         <h2 class="card-title">{{ $report->title }}</h2>
                         <p class="card-text">
                             {!! $report->excerpt !!}
