@@ -32,7 +32,7 @@ class CategoryHoax extends Model
         'remember_token',
     ];
 
-    public function report()
+    public function reports()
     {
         return $this->hasMany(Report::class);
     }

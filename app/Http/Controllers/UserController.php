@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Report;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -34,14 +35,16 @@ class UserController extends Controller
     public function fact()
     {
         return view('user.fact', [
-            'active' => 'fact'
+            'active' => 'fact',
+            'reports' => Report::where('status_report', 1)->paginate(5)
         ]);
     }
 
     public function hoax()
     {
         return view('user.hoax', [
-            'active' => 'hoax'
+            'active' => 'hoax',
+            'reports' => Report::where('status_report', 0)->paginate(5)
         ]);
     }
 
