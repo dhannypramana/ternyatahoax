@@ -14,6 +14,10 @@
     {{-- Trix --}}
     <link rel="stylesheet" href="/css/trix.css">
     <script type="text/javascript" src="/js/trix.js"></script>
+
+    {{-- Fontawesome --}}
+    <script src="https://kit.fontawesome.com/08bb5a304f.js" crossorigin="anonymous"></script>
+    
     <style>
       trix-toolbar [data-trix-button-group="file-tools"] {
         display: none;

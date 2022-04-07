@@ -87,8 +87,8 @@
           </li>
         </ul>
       @else
-        <a href="/login" class="btn btn-warning mr-2">Login as User</a>
-        <a href="/admin/login" class="btn btn-warning">Login as Admin</a>
+        <a href="/login" class="btn btn-light text-primary fw-bold me-2">Login as User</a>
+        <a href="/admin/login" class="btn btn-light  text-primary fw-bold">Login as Admin</a>
       @endauth
     </div>
   </div>

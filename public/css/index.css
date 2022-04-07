@@ -5,24 +5,42 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
-.title {
-    font-size: 36px;
-    font-weight: bold;
-    text-align: center;
+.jumbotron{
+    padding-top: 18rem;
+    width: 100%;
+    background: url('../img/bg-hero.jpg');
+    background-size: cover;
+    
+}
+
+#about {
+    background-color: #0d6efd;
 }
 
 .navbar {
     padding: 15px;
 }
 
+#lapor {
+    background-color: #0d6efd;
+}
+
+
+/* .title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
 .form-group{
     margin-bottom: 20px;
-    /* width: 100% */
-    /* background-color: red; */
+    width: 100%;
+    background-color: red;
 }
 .right-navbar{
     right: 30%;
-}
+} */
 
 /* .form-container{
     display: flex;
@@ -31,19 +49,21 @@ body {
     align-items: center;
 } */
 /* 
-.button {
-    float: right;
-} */
-
-.btn {
-    border-radius: 10px;
-    /* color: white; */
-    /* font-weight: bold; */
-}
 
 .separator{
     margin: 1px;
 }
+
+.button {
+    float: right;
+} */
+
+/* .btn {
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+}
+
 
 .masthead {
     min-height: 30rem;
@@ -93,6 +113,6 @@ body {
 }
 
 
-  /* .sub-title{
+  .sub-title{
       color: bl;
   } */
