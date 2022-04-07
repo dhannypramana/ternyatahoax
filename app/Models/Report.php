@@ -24,7 +24,8 @@ class Report extends Model
         'isReviewed',
         'status_report',
         'user_id',
-        'categoryhoax_id'
+        'categoryhoax_id',
+        'excerpt'
     ];
 
     /**

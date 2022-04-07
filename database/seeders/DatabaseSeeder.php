@@ -26,6 +26,16 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('superadmin')
         ]);
 
+        User::create([
+            'full_name' => 'Dhanny Adhi Pramana',
+            'no_telepon_wa' => '+6283170550450',
+            'tgl_lahir' => '2022-04-02',
+            'gender' => 'pria',
+            'username' => 'daniap',
+            'email' => 'dani@gmail.com',
+            'password' => Hash::make('daniap')
+        ]);
+
         // Create 7 Category Hoax
         
         CategoryHoax::create([

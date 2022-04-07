@@ -34,6 +34,7 @@ class ReportController extends Controller
 
         $user_id = auth()->user()->id;
         $slug = SlugFormatter::generateSlug($request->title);
+        $excerpt = SlugFormatter::generateExcerpt($request->body);
 
         $request->validate([
             'title' => 'required|min:5',
@@ -58,6 +59,7 @@ class ReportController extends Controller
             'slug' => $slug,
             'image' => $imgName,
             'user_id' => $user_id,
+            'excerpt' => $excerpt,
         ]);
 
         $request->session()->flash('successAdd', 'Terima kasih atas feedback kamu, laporan kamu akan segera di review');

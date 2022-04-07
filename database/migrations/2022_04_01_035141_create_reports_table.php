@@ -21,6 +21,7 @@ class CreateReportsTable extends Migration
             $table->text('title');
             $table->text('slug');
             $table->text('body');
+            $table->text('excerpt');
             $table->string('image')->nullable();
             $table->string('link');
             $table->boolean('isReviewed')->default(0);
