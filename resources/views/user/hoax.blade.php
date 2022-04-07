@@ -3,7 +3,7 @@
 @section('container')
 <div class="container p-5 mt-5">
     <div class="row">
-        <div class="col-lg-7 rounded">
+        <div class="col-lg-8 rounded">
             @foreach ($reports as $report)
                 <div class="card mb-4">
                     <div class="card-header p-4 bg-danger text-white">Hoax | {{ $report->categoryhoax->category }}</div>
