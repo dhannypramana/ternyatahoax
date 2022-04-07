@@ -12,7 +12,7 @@
     <table class="table table-bordered">
         <tr>
             <th>No.</th>
-            <th class="col-lg-5">Judul Berita</th>
+            <th class="col-lg-3">Judul Berita</th>
             <th>Nama Pelapor</th>
             <th>Tanggal Lapor</th>
             <th>Status Report</th>
@@ -30,8 +30,7 @@
                     @if ($report->status_report == 1)
                         <button class="btn btn-success disabled">Fakta</button>
                     @else
-                        <button class="btn btn-danger disabled">Hoax</button>                        
-                        <button class="btn btn-danger disabled">{{ $report->categoryhoax->category }}</button>
+                        <a class="btn btn-danger disabled">{{ $report->categoryhoax->category }}</a>
                     @endif
                 </td>
                 @php

@@ -123,7 +123,6 @@
                                                   <button class="btn btn-success disabled mt-3">Fakta</button>
                                               @else
                                                   <br>
-                                                  <button class="btn btn-danger disabled mt-3">Hoax</button>
                                                   <button class="btn btn-danger disabled mt-3">{{ $report->categoryhoax->category }}</button>
                                               @endif
                                           @endif
