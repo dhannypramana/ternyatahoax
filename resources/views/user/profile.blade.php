@@ -114,6 +114,7 @@
                                                 @else
                                                     <br>
                                                     <button class="btn btn-danger disabled mt-3">Hoax</button>
+                                                    <button class="btn btn-danger disabled mt-3">{{ $report->categoryhoax->category }}</button>
                                                 @endif
                                             </div>
                                         </div>

@@ -23,7 +23,8 @@ class Report extends Model
         'slug',
         'isReviewed',
         'status_report',
-        'user_id'
+        'user_id',
+        'categoryhoax_id'
     ];
 
     /**
@@ -42,6 +43,6 @@ class Report extends Model
 
     public function categoryhoax()
     {
-        return $this->hasOne(CategoryHoax::class);
+        return $this->belongsTo(CategoryHoax::class);
     }
 }

@@ -8,6 +8,14 @@
                 <div class="card-header p-3 mb-2 text-center">
                     Activity Log
                 </div>
+                @if (session()->has('successAdd'))
+                    <div class="alert alert-success alert-dismissible fade show col-lg-6 mx-auto mt-4" role="alert">
+                        {{ session('successAdd') }}
+                        <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <div class="card-body col-md-12">
                     <div class="row p-3">
                         @if ($user->report->first())
@@ -24,6 +32,7 @@
                                         @else
                                             <br>
                                             <button class="btn btn-danger disabled mt-3">Hoax</button>
+                                            <button class="btn btn-danger disabled mt-3">{{ $report->categoryhoax->category }}</button>
                                         @endif
                                     @else
                                         <br>

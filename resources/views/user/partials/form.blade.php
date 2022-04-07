@@ -1,13 +1,5 @@
 <div class="container">
   <div class="row mt-5 justify-content-center">
-    @if (session()->has('successAdd'))
-      <div class="alert alert-success alert-dismissible fade show col-lg-6 mt-5" role="alert">
-          {{ session('successAdd') }}
-          <button type="button" class="btn close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-    @endif
     <div class="col-md-7 mt-5">
         <div class="card mb-3">
             <div class="card-header p-3 mb-4 text-center h3">

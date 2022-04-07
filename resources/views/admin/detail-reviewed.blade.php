@@ -12,10 +12,11 @@
                 <img src="{{ asset('/storage/images/' . $report->image) }}" height="500">
             @endif
             <p class="card-text">Isi berita : {!! $report->body !!}</p>
-            @if ($report->status_report == 1) {{-- status_report 1 FAKTA --}}
+            @if ($report->status_report == 1)
                 <button class="btn btn-success disabled">Fakta</button>
             @else
-                <button class="btn btn-danger disabled">Hoax</button>                        
+                <button class="btn btn-danger disabled">Hoax</button>
+                <button class="btn btn-danger disabled">{{ $report->categoryhoax->category }}</button>
             @endif
         </div>
     </div>

@@ -27,10 +27,11 @@
                 <td><a href="/admin/dashboard/manage-users/{{ $report->user->username }}">{{ $report->user->full_name }}</td>
                 <td>{{ $report->created_at->format('F j, Y, H:i a') }}</td>
                 <td>
-                    @if ($report->status_report == 1) {{-- status_report 1 FAKTA --}}
+                    @if ($report->status_report == 1)
                         <button class="btn btn-success disabled">Fakta</button>
                     @else
                         <button class="btn btn-danger disabled">Hoax</button>                        
+                        <button class="btn btn-danger disabled">{{ $report->categoryhoax->category }}</button>
                     @endif
                 </td>
                 @php

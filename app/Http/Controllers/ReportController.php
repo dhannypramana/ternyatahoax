@@ -61,7 +61,7 @@ class ReportController extends Controller
         ]);
 
         $request->session()->flash('successAdd', 'Terima kasih atas feedback kamu, laporan kamu akan segera di review');
-        return redirect('/lapor');
+        return redirect('/activity-log/' . auth()->user()->username);
     }
 
     public function unreviewed()
@@ -95,15 +95,23 @@ class ReportController extends Controller
         ]);
     }
 
-    public function setReviewHoax(Report $report)
+    public function setReviewHoax(Report $report, Request $request)
     {
         $report->update([
             'isReviewed' => 1,
             'status_report' => 0,
-            'categoryhoax_id' => 7
+            'categoryhoax_id' => $request->category
         ]);
 
         return redirect('/admin/dashboard/unreviewed')->with('success', 'Sukses mereview laporan silahkan cek di bagian reviewed reports');
+    }
+
+    public function setCategoryHoax(Report $report)
+    {
+        return view('admin.set-category', [
+            'active' => 'unreviewed',
+            'report' => $report
+        ]);
     }
 
     public function setReviewFact(Report $report)
