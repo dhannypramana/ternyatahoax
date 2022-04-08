@@ -3,9 +3,11 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Collection;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,12 @@ Route::get('/404', function () {
 Route::get('/403', function () {
     return view('errors.403');
 })->name('403');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify')->middleware(['signed']);
+    Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+});
 
 Route::prefix('admin')->group(function () {
     Route::prefix('dashboard')->group(function () {
@@ -82,7 +90,7 @@ Route::post('/register', [UserController::class, 'store'])->middleware('guest');
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 // Manage Reports
-Route::get('/lapor', [ReportController::class, 'index']);
+Route::get('/lapor', [ReportController::class, 'index'])->middleware('verified');
 Route::post('/lapor', [ReportController::class, 'store']);
 
 // Accessible Non Auth User

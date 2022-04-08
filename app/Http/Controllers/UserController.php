@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class UserController extends Controller
 {
@@ -126,7 +127,7 @@ class UserController extends Controller
             'password' => 'required|min:4|max:32'
         ]);
 
-        User::create([
+        $user = User::create([
             'full_name' => $request->first_name . " " . $request->last_name,
             'no_telepon_wa' => $request->no_telepon_wa,
             'tgl_lahir' => $request->tgl_lahir,
@@ -135,6 +136,8 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
+
+        event(new Registered($user));
 
         $request->session()->flash('success', 'Registration Sucess, Please Login');
         return redirect('/login');
