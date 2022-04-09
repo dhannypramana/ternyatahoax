@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             'tgl_lahir' => '2022-04-02',
             'gender' => 'pria',
             'username' => 'daniap',
-            'email' => 'dani@gmail.com',
+            'email' => 'akunduit1212@gmail.com',
             'password' => Hash::make('daniap')
         ]);
 

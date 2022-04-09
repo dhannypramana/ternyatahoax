@@ -160,7 +160,12 @@ class UserController extends Controller
         }
         
         $request->session()->regenerate();
-        return redirect('/');
+        if (auth()->user()->email_verified_at == null) {
+            return redirect('/email/verify');
+        } else {
+            return redirect('/');
+        }
+        
     }
 
     public function logout(Request $request)
