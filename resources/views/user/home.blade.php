@@ -82,30 +82,21 @@
             </div>
             <div class="row gx-lg-5 justify-content-center">
                 @foreach ($reports as $report)
-                    <div class="col-md-3 mb-3">
-                        @if ($report->isReviewed == 1)
-                        <div class="card">
-                            @if ($report->image != null)
-                                <img class="card-img-top" style="object-fit: cover" height="300" src="{{ asset('/storage/images/' . $report->image) }}"/>
-                            @else
-                                <img class="card-img-top" src="https://dummyimage.com/850x890/fafafa/050726.jpg&text=+No+Image+Found"/>                        
-                            @endif
-                        @endif
+                    @if ($report->isReviewed == 1)
+                        <div class="col-md-3 mb-3">
+                            <div class="card">
+                                @if ($report->image != null)<img src="{{ asset('storage/images/' . $report->image) }}" class="card-img-top" height="288" style="object-fit: cover">
+                                @else<img src="https://dummyimage.com/600x400/ffffff/000000.png&text=this+report+has+no+image" class="card-img-top" height="288" style="object-fit: fill">@endif
                                 <div class="card-body">
-                                @if ($report->isReviewed == 1)
-                                    @if ($report->status_report == 1)
-                                        <h6 class="card-subtitle mb-2 text-success fw-bold">Fakta</h6>
-                                    @else
-                                        <h6 class="card-subtitle mb-2 text-danger fw-bold">{{ $report->categoryhoax->category }}</h6>
-                                    @endif
-                                    
-                                    <h5 class="card-title text-center mb-4">{{ $report->title }}</h5>
-                                    <p class="card-text text-justify">{{ $report->excerpt }}</p>
+                                    @if ($report->status_report == 1)<h6 class="card-subtitle mb-2 fw-bold text-success">Fakta</h6>
+                                    @else <h6 class="card-subtitle mb-2 fw-bold text-danger">{{ $report->categoryhoax->category }}</h6>@endif
+                                    <h5 class="card-title text-center">{{ $report->title }}</h5>
+                                    <p class="card-text">{{ $report->excerpt }}</p>
                                     <a href="/blog/{{ $report->slug }}" class="card-link text-decoration-none">Lihat Selengkapnya</a>
-                                @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>
