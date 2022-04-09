@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use Illuminate\Support\Str;
+use App\Models\CategoryHoax;
 use Illuminate\Http\Request;
 use App\Helpers\SlugFormatter;
-use App\Models\CategoryHoax;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -42,7 +43,7 @@ class ReportController extends Controller
         }
 
         $user_id = auth()->user()->id;
-        $slug = SlugFormatter::generateSlug($request->title);
+        $slug = Str::slug($request->title);
         $excerpt = SlugFormatter::generateExcerpt($request->body);
 
         $request->validate([

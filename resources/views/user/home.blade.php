@@ -184,5 +184,4 @@
         </div>
     </footer>
     {{-- Footer End --}}
-    {{ $reports->links() }}
 @endsection
