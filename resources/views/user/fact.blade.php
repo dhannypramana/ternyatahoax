@@ -12,7 +12,7 @@
                 </div>
                 <div class="card mb-4">
                     @if ($report->image != null)
-                        <img style="object-fit: cover;object-position:center" height="300" class="card-img-top" src="{{ asset('/storage/images/' . $report->image) }}"/>
+                        <img style="object-fit: cover;" height="300" class="card-img-top" src="{{ asset('/storage/images/' . $report->image) }}"/>
                     @else
                         <img class="card-img-top" src="https://dummyimage.com/850x350/fafafa/050726.jpg&text=+No+Image+Found"/>                        
                     @endif

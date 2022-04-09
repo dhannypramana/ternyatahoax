@@ -101,7 +101,7 @@
                                       <div class="col-md-12 card flex-wrap mb-3">
                                         <div class="card-body">
                                                 <a class="card-title h5" href="/admin/dashboard/unreviewed/{{ $report->slug }}">{{ $report->title }}</a>
-                                                <h6 class="card-subtitle mb-2 mt-2 text-muted">Kamu melaporkan ini pada {{ $report->created_at->format('F j, Y, H:i a') }}</h6>
+                                                <h6 class="card-subtitle mb-2 mt-2 text-muted">{{ $report->user->full_name }} melaporkan ini pada {{ $report->created_at->format('F j, Y, H:i a') }}</h6>
                                                 Sumber: <a href="https://{{ $report->link }}" class="card-link">{{ $report->link }}</a>
                                                 <br>
                                                 <br>
@@ -115,7 +115,7 @@
                                   <div class="col-md-12 card flex-wrap mb-3">
                                       <div class="card-body">
                                           <a class="card-title h5" href="/admin/dashboard/reviewed/{{ $report->slug }}">{{ $report->title }}</a>
-                                          <h6 class="card-subtitle mb-2 mt-2 text-muted">Kamu melaporkan ini pada {{ $report->created_at->format('F j, Y, H:i a') }}</h6>
+                                          <h6 class="card-subtitle mb-2 mt-2 text-muted">{{ $report->user->full_name }} melaporkan ini pada {{ $report->created_at->format('F j, Y, H:i a') }}</h6>
                                           Sumber: <a href="https://{{ $report->link }}" class="card-link">{{ $report->link }}</a>
                                           @if ($report->isReviewed == 1)
                                               @if ($report->status_report)
@@ -132,9 +132,7 @@
                                   @endforeach
                               @else
                                   <div class="text-center mt-3">
-                                      <p>Kamu belum mempunyai laporan
-                                          <a href="/lapor">Ayo Lapor sekarang!</a>
-                                      </p>
+                                      <p>Belum ada laporan</p>
                                   </div>
                               @endif
                           </div>

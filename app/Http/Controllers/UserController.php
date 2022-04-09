@@ -38,7 +38,7 @@ class UserController extends Controller
 
         return view('user.home', [
             'active' => 'home',
-            'reports' => Report::latest()->paginate(4)
+            'reports' => Report::latest()->paginate(1)
         ]);
     }
 

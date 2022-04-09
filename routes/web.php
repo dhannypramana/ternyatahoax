@@ -90,7 +90,7 @@ Route::post('/register', [UserController::class, 'store'])->middleware('guest');
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 // Manage Reports
-Route::get('/lapor', [ReportController::class, 'index'])->middleware('verified');
+Route::get('/lapor', [ReportController::class, 'index']);
 Route::post('/lapor', [ReportController::class, 'store']);
 
 // Accessible Non Auth User

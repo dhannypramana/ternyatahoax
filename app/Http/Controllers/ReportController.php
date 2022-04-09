@@ -22,6 +22,10 @@ class ReportController extends Controller
             return redirect('/login')->with('info', 'Silahkan lakukan login terlebih dahulu');
         }
 
+        if (auth()->user()->email_verified_at == null) {
+            return redirect('/email/verify')->with('info', 'Silahkan lakukan verifikasi email terlebih dahulu');
+        }
+
         return view('user.lapor', [
             'active' => 'home',
         ]);
@@ -31,6 +35,10 @@ class ReportController extends Controller
     {
         if (auth()->user() == null) {
             return redirect('/login')->with('info', 'Silahkan lakukan login terlebih dahulu');
+        }
+        
+        if (auth()->user()->email_verified_at == null) {
+            return redirect('/email/verify')->with('info', 'Silahkan lakukan verifikasi email terlebih dahulu');
         }
 
         $user_id = auth()->user()->id;
