@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'full_name' => 'Dhanny Adhi Pramana',
-            'no_telepon_wa' => '+6283170550450',
+            'no_telepon_wa' => '83170550450',
             'tgl_lahir' => '2022-04-02',
             'gender' => 'pria',
             'username' => 'daniap',

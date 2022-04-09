@@ -77,7 +77,12 @@
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-lg-6">
-                                <input disabled type="text" name="email" value="{{ $user->email }}" class="form-control @error('email') is-invalid @enderror">
+                                @if ($user->email_verified_at == null)
+                                    <input type="text" name="email" value="{{ $user->email }}" class="form-control @error('email') is-invalid @enderror">
+                                @else
+                                    <input disabled type="text" name="email" value="{{ $user->email }}" class="form-control @error('email') is-invalid @enderror">
+                                    <span class="small text-success"><sup>*</sup>Email kamu sudah ter-verifikasi</span>
+                                @endif
                                 @error('email')
                                     <div class="invalid-feedback">
                                         {{ $message }}

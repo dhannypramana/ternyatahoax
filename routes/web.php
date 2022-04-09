@@ -102,4 +102,4 @@ Route::get('/blog/{report:slug}', [UserController::class, 'blog']);
 Route::get('/profile/{user:username}', [UserController::class, 'profile'])->middleware('auth');
 Route::get('/edit/{user:username}', [UserController::class, 'edit'])->middleware('auth');
 Route::post('/edit/{user:username}', [UserController::class, 'edit_profile'])->middleware('auth');
-Route::get('/activity-log/{user:username}', [UserController::class, 'activity_log'])->middleware('auth');
+Route::get('/activity-log/{user:username}', [UserController::class, 'activity_log'])->middleware(['auth', 'verified']);

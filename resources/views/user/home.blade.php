@@ -13,7 +13,7 @@
                 @if (auth()->user())
                     <a class="btn btn-primary btn-lg p-3" style="margin-bottom: 100px" href="/lapor" role="button">Ayo Lapor Sekarang! </a>
                 @else
-                    <a class="btn btn-primary btn-lg p-3" style="margin-bottom: 100px" href="#" role="button">Daftar Sekarang </a>
+                    <a class="btn btn-primary btn-lg p-3" style="margin-bottom: 100px" href="/register" role="button">Daftar Sekarang </a>
                 @endif
             </div>
         </div>

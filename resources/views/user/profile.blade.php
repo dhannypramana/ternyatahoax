@@ -58,7 +58,12 @@
                                 <h6 class="mb-0">Email</h6>
                             </div>
                             <div class="col-md-5 text-secondary">
-                                {{ $user->email }}
+                                {{ $user->email }} <br>
+                            @if ($user->email_verified_at == null)
+                                <span class="small text-danger"><sup>*</sup>email belum ter-verifikasi</span>
+                            @else
+                                <span class="small text-success"><sup>*</sup>email ter-verifikasi</span>
+                            @endif
                             </div>
                         </div>
                         <hr>
@@ -75,10 +80,17 @@
                             <div class="col-md-2">
                                 <a href="javascript:history.back()" class="btn btn-primary">Kembali</a>
                             </div>
+                            <div class="col-md-4">
+                                @if ($user->email_verified_at == null)
+                                    <a href="/email/verify" class="btn btn-info">Verifikasi email kamu</a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @if ($user->email_verified_at == null)
+            @else
             <div class="col-md-6 mt-5">
                 <div class="card">
                     <div class="card-header p-3 text-center">
@@ -136,6 +148,7 @@
                     </div>
                 </div>
             </div>
+            @endif
     </div>
-      </div>
+</div>
 @endsection
