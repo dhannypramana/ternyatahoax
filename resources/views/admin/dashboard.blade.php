@@ -5,9 +5,9 @@
 @endsection
 
 @section('title_page')
-    @php if(auth('admins')->user()->username !== 'superadmin'): @endphp 
+    @php if(auth('admins')->user()->username !== 'superadmin'): @endphp
             {{ 'Dashboard Admin' }}
-        @else 
+        @else
             {{ 'Dashboard Super Admin' }}
         @endif
 @endsection

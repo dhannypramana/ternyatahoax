@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Auth\Events\Registered;
 
 class UserController extends Controller
@@ -146,26 +147,25 @@ class UserController extends Controller
     public function authenticate(Request $request)
     {
         $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required'
         ]);
 
         $credentials = request([
-            'username',
+            'email',
             'password'
         ]);
 
         if (!Auth::attempt($credentials)) {
             return back()->with('error', 'Username or Password does not match');
         }
-        
+
         $request->session()->regenerate();
         if (auth()->user()->email_verified_at == null) {
             return redirect('/email/verify');
         } else {
             return redirect('/');
         }
-        
     }
 
     public function logout(Request $request)

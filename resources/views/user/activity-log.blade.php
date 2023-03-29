@@ -16,11 +16,11 @@
                         </button>
                     </div>
                 @endif
-                <div class="card-body col-md-12">
+                <div class="card-body col-lg-15">
                     <div class="row p-3">
                         @if ($user->report->first())
                             @foreach ($user->report as $report)
-                            <div class="col-md-5 card flex-wrap mb-3 mx-auto">
+                            <div class="col-md-6 card flex-wrap mb-3 mx-auto">
                                 <div class="card-body text-center">
                                     <h5 class="card-title">{{ $report->title }}</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">Kamu melaporkan ini pada {{ $report->created_at->format('F j, Y, H:i a') }}</h6>

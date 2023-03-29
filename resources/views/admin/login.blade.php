@@ -38,8 +38,8 @@
 
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-7">
                                 <div class="p-5">
                                     @if (session()->has('loginError'))
                                         <div class="alert alert-danger alert-dismissible fade show">
@@ -50,7 +50,7 @@
                                     <div class="text-center">
                                         {{-- <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1> --}}
                                         @if (session()->has('error'))
-                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <div class="col-lg-15 alert alert-danger alert-dismissible fade show" role="alert">
                                                 {{ session('error') }}
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>

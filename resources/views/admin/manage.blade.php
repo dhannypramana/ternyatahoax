@@ -23,7 +23,7 @@
     @endif
 
     @if ($admins->first())
-    <table class="table table-bordered bg-primary text-white">
+    <table class="table table-bordered">
         <tr>
             <td>No</td>
             <td>Username</td>
