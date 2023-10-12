@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Admin;
 use App\Models\CategoryHoax;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
@@ -34,6 +35,20 @@ class DatabaseSeeder extends Seeder
             'username' => 'daniap',
             'email' => 'akunduit1212@gmail.com',
             'password' => Hash::make('daniap')
+        ]);
+
+        DB::table('users')->insert([
+            // 'id' => 8,
+            'username' => 'muhammad.popo',
+            'full_name' => 'Aljariyah Popo',
+            'email' => 'popo.ganteng@gmail.com',
+            'no_telepon_wa' => '83170550451',
+            'tgl_lahir' => '2022-04-02',
+            'gender' => 'pria',
+            'email_verified_at' => '2022-05-13 01:19:44',
+            'password' => Hash::make('popo'),
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         // Create 7 Category Hoax

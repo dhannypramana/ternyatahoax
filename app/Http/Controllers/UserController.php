@@ -147,12 +147,12 @@ class UserController extends Controller
     public function authenticate(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
         $credentials = request([
-            'email',
+            'username',
             'password'
         ]);
 

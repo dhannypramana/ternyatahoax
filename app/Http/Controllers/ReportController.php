@@ -37,7 +37,7 @@ class ReportController extends Controller
         if (auth()->user() == null) {
             return redirect('/login')->with('info', 'Silahkan lakukan login terlebih dahulu');
         }
-        
+
         if (auth()->user()->email_verified_at == null) {
             return redirect('/email/verify')->with('info', 'Silahkan lakukan verifikasi email terlebih dahulu');
         }
@@ -55,7 +55,7 @@ class ReportController extends Controller
 
         $imgName = "";
 
-        if($request->has('image')){
+        if ($request->has('image')) {
             $extension      = $request->file('image')->extension();
             $imgName        = time() . date('dmyHis') . rand() . '.' . $extension;
 
@@ -151,5 +151,4 @@ class ReportController extends Controller
             'categories' => CategoryHoax::get()
         ]);
     }
-
 }
